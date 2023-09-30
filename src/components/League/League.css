@@ -1,0 +1,84 @@
+.container-league
+{
+    display: flex;
+    flex-direction: column;
+    
+}
+.container-league-header
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    
+}
+.detail-league
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+.league-header
+{
+    
+    display: flex;
+    align-items: center;
+    width: 60%;
+    background-color: red;
+    margin-top:2rem;
+ }
+ .league-header-logo
+ {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 2rem;
+ }
+ .logo-header
+ {
+    width: 6rem;
+    height: 6rem;
+    background-color: white;
+    border-radius: 20px;
+    margin-right: 20px;
+ }
+.container-league-body
+{
+    display: flex;
+    flex-direction: column;
+}
+.container-league-body-header
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.container-league-body-content
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.league-body-header
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 60%;
+    background-color: red;
+    margin-top:2rem;
+}
+.last-results,.next-matches,.standings
+{
+    background-color: transparent;
+    border: none;
+    margin-left:1rem;
+    margin-right:1rem;
+    
+}

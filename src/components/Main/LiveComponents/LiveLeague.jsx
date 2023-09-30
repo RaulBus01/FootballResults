@@ -39,15 +39,19 @@ export default function LiveLeague(props)
               <LiveMatch
               key={match.id}
               startTime={match.utcDate}
-              homeTeamName={match.homeTeam.name}
-              homeTeamCrest={match.homeTeam.crest}
-              awayTeamName={match.awayTeam.name}
-              awayTeamCrest={match.awayTeam.crest}
+              homeTeam={match.homeTeam}
+              awayTeam={match.awayTeam}
               halfTimeHomeTeamScore={match.score.halfTime.home}
               halfTimeAwayTeamScore={match.score.halfTime.away}
               fullTimeHomeTeamScore={match.score.fullTime.home}
               fullTimeAwayTeamScore={match.score.fullTime.away}
               status={match.status}
+              competition={match.competition}
+              stage={match.stage}
+              matchday={match.matchday}
+              group={match.group}
+              date={match.utcDate}
+                matchId={match.id}
             
               />
           ))

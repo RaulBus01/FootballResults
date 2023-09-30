@@ -6,6 +6,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Form, Button, Row, Col } from "react-bootstrap";
 import './Header.css'
 import "bootstrap/js/src/collapse.js";
+import { useNavigate } from "react-router-dom";
+
 export default function Header ()
 {
     
@@ -19,20 +21,17 @@ export default function Header ()
       };
     const searchStyle = {
         backgroundColor: "transparent",
-        maxHeight: '50px',
-    
-        
-        
-        
-        
+        maxHeight: '50px',   
     }
+   
+    const navigate = useNavigate();
  
       return (
       
         
         <nav className="navbar navbar-expand-md bg-body-transparent " fixed="top"  style={styleNormal}>
             <div className="container-fluid">
-            <div className="navbar-brand" href="#home">
+            <div className="navbar-brand" onClick={()=>navigate("/home")}>
             <img className="football-png" src="src\assets\football.svg" alt="logo" />
                 <img className="logo-png" src="src\assets\Flash.png" alt="logo" />
             

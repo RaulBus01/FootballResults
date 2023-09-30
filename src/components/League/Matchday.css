@@ -1,0 +1,21 @@
+.matchday-container
+{
+    display: inline-block;
+    
+    width: 100%;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+.matchday-container-body
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+   
+}
+
+button.selected
+{
+    background-color: blue;
+    border-radius: 10px;
+}

@@ -2,6 +2,7 @@ import React from "react";
 import { Container, NavLink, Navbar } from "react-bootstrap";
 import LeagueHeader from "../LeagueHeader/LeagueHeader";
 import "bootstrap/js/src/dropdown.js";
+import { useNavigate } from "react-router-dom";
 export default function NavbarMain() {
     const styleNormal = {
         backgroundColor: "#698269",
@@ -11,36 +12,36 @@ export default function NavbarMain() {
         flexDirection: 'row',
         justifyContent: 'space-evenly',
         alignItems: 'center',
-
+      
        
        
      
         
     }
+    const navigate = useNavigate();
+    
     return (
     <nav className="navbar navbar-expand-xl " sticky="top" style={styleNormal}>
         <div className="navbar-nav" style={styleNormal} >
-                <NavLink href="#Premier League">
+                <NavLink  onClick={()=> navigate("/league")}>
                     <LeagueHeader name="Premier League"logo="src\assets\LeagueLogo\logo-EPL.png" /> 
                 </NavLink>
-                <NavLink href="#La liga">
+                <NavLink >
                     <LeagueHeader name="La Liga"logo="src\assets\LeagueLogo\logo-LaLiga.png" />
                 </NavLink>
-                <NavLink href="#Seria A">
+                <NavLink >
                     <LeagueHeader name="Serie A"logo="src\assets\LeagueLogo\logo-SerieA.png" />
                 </NavLink>
-                <NavLink href="#Bundesliga">
+                <NavLink >
                     <LeagueHeader name="Bundesliga"logo="src\assets\LeagueLogo\logo-Bundesliga.png" />
                 </NavLink>
-                <NavLink href="#Ligue1">
+                <NavLink >
                     <LeagueHeader name="Ligue 1"logo="src\assets\LeagueLogo\logo-Ligue1.png" />
                 </NavLink>
-                <NavLink href="#UCL">
+                <NavLink>
                     <LeagueHeader name="Champions League"logo="src\assets\LeagueLogo\logo-UCL.png" />
                 </NavLink>
-                <NavLink href="#UEL">
-                    <LeagueHeader name="Europa League"logo="src\assets\LeagueLogo\logo-UEL.png" />
-                </NavLink>
+                
                 <NavLink>
                 <div className="dropdown show">
                     <div className="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

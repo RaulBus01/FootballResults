@@ -62,6 +62,7 @@
 }
 .preview
 {
+    margin-right: 10px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -85,4 +86,27 @@
     border: none;
     border-radius: 10px;
     color: #EEEEEE;
+} 
+
+.live-preview
+{
+    position: absolute;
+    right: 0;
+    margin-right: 10px;
+    margin-left: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 19%;
+    border-radius: 10px;
+    
+
+   
+   
+    
+    
+   
 }

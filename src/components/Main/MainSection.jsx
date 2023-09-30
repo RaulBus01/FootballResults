@@ -37,8 +37,8 @@ export default  function mainSection() {
         const days = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate();
         return `${years}-${months}-${days}`;
     }
+    
    
-
    
     React.useEffect(() => {
         
@@ -123,6 +123,7 @@ export default  function mainSection() {
      
     },[matches]);
 
+    console.log(matchByCompetition);
    
 
 

@@ -1,11 +1,12 @@
 import React from "react";
-import LiveMatch from "../Main/LiveComponents/LiveMatch.jsx";
+// import LiveMatch from "../Main/LiveComponents/LiveMatch.jsx";
+import Fixture from "./Fixture.jsx";
 import "./Matchday.css";
 
 export default function Matchday(props)
 {
     // console.log(`Matchady ${props.matchday}` );
-    // console.log(props.matches);
+    
     return(
     <div className="matchday-container">
         <div className="matchday-container-body">
@@ -20,7 +21,7 @@ export default function Matchday(props)
         <div className="matchday-body">
            {
             props.matches && props.matches.map((matchday) => (
-                <LiveMatch 
+                <Fixture
                 key={matchday.key}
                 startTime={matchday.match.utcDate}
                 homeTeam={matchday.match.homeTeam}

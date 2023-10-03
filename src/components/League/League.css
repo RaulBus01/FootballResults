@@ -64,6 +64,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 .league-body-header
 {
@@ -82,3 +83,86 @@
     margin-right:1rem;
     
 }
+.league-body-content-standings
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+}
+table{
+    border-radius: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+
+
+}
+
+.table td 
+{
+        height: 5rem;
+     
+}
+      
+    
+
+.position-row
+{
+    
+    display: flex;
+
+  justify-content: center;
+    align-items: center;
+    text-align: center;
+
+}
+
+
+
+.logo-team
+{
+    width: 3rem;
+    height: rem;
+    background-color: white;
+    border-radius: 10px;
+    padding: 5px;
+    margin-right: 20px;
+}
+.form-row {
+    display: flex;
+    height:5rem;
+    align-items: center;
+  }
+
+  
+  .form-W,
+  .form-D,
+  .form-L {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-weight: bold;
+    font-size: 1rem;
+    width: 1.5rem; 
+    height: 1.5rem; 
+    border-radius: 5px;
+    padding: 5px;
+    margin-right: 20px;
+  }
+
+.form-W {
+    background-color: #008080;
+}
+
+.form-D {
+    background-color: #E9B824;
+}
+
+.form-L {
+    background-color: #D83F31;
+}
+

@@ -1,9 +1,10 @@
+
 import React from "react";
-import "./LiveMatch.css";
-import LivePreview from "./LivePreview.jsx";
+
 export default function LiveMatch(props)
 {
-    function getLocalStartDate(startTime) {
+   
+      function getLocalStartDate(startTime) {
         const matchStartTime = new Date(startTime);
 
         const localStartDate = matchStartTime.toLocaleDateString([], {
@@ -30,7 +31,7 @@ export default function LiveMatch(props)
     
         <div className="status-container">
         <div className="status">
-            { props.status==="FINISHED" ? "Final" : props.status === "IN_PLAY" ? "Playing" : props.status ==="TIMED" ? getLocalStartDate(props.startTime) : props.status === "SCHEDULED" ? "TBD": props.status ==="PAUSED" ? "Paused" : " " }
+        { props.status==="FINISHED" ? "Final" : props.status === "IN_PLAY" ? "Playing" : props.status ==="TIMED" ? getLocalStartDate(props.startTime) : props.status === "SCHEDULED" ? "TBD": props.status ==="PAUSED" ? "Paused" : " " }
         </div>
         </div>
 

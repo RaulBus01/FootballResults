@@ -31,7 +31,7 @@ export default function Header ()
         
         <nav className="navbar navbar-expand-md bg-body-transparent " fixed="top"  style={styleNormal}>
             <div className="container-fluid">
-            <div className="navbar-brand" onClick={()=>navigate("/home")}>
+            <div className="navbar-brand" onClick={()=>navigate("./")}>
             <img className="football-png" src="src\assets\football.svg" alt="logo" />
                 <img className="logo-png" src="src\assets\Flash.png" alt="logo" />
             

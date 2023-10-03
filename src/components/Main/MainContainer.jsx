@@ -7,12 +7,13 @@ import League from "../League/League.jsx";
 import { Routes, Route } from "react-router-dom";
 
 export default function Main() {
+
   return (
     <main>
       <NavbarMain />
       <Routes>
-        <Route path="/home" element={<MainSection />} />
-        <Route path="/league" element={<League/>} />
+        <Route path="/" element={<MainSection />} />
+        <Route path="/:leagueName" element={<League/>} />
       </Routes>
     </main>
   );

@@ -23,26 +23,26 @@ export default function NavbarMain() {
     return (
     <nav className="navbar navbar-expand-xl " sticky="top" style={styleNormal}>
         <div className="navbar-nav" style={styleNormal} >
-                <NavLink  onClick={()=> navigate("/league")}>
-                    <LeagueHeader name="Premier League"logo="src\assets\LeagueLogo\logo-EPL.png" /> 
+                <NavLink  onClick={()=> navigate("/PremierLeague")}>
+                    <LeagueHeader name="Premier League" logo=".\src\assets\LeagueLogo\logo-EPL.png" />
                 </NavLink>
-                <NavLink >
-                    <LeagueHeader name="La Liga"logo="src\assets\LeagueLogo\logo-LaLiga.png" />
+                <NavLink onClick={()=> navigate("/LaLiga")}>
+                    <LeagueHeader name="La Liga"logo=".\src\assets\LeagueLogo\logo-LaLiga.png" />
                 </NavLink>
-                <NavLink >
+                <NavLink onClick={()=> navigate("/SerieA")}>
                     <LeagueHeader name="Serie A"logo="src\assets\LeagueLogo\logo-SerieA.png" />
                 </NavLink>
-                <NavLink >
+                <NavLink onClick={()=> navigate("/Bundesliga")}>
                     <LeagueHeader name="Bundesliga"logo="src\assets\LeagueLogo\logo-Bundesliga.png" />
                 </NavLink>
-                <NavLink >
+                <NavLink onClick={()=> navigate("/Ligue1")}>
                     <LeagueHeader name="Ligue 1"logo="src\assets\LeagueLogo\logo-Ligue1.png" />
                 </NavLink>
-                <NavLink>
+                <NavLink onClick={()=> navigate("/ChampionsLeague")}>
                     <LeagueHeader name="Champions League"logo="src\assets\LeagueLogo\logo-UCL.png" />
                 </NavLink>
                 
-                <NavLink>
+                <NavLink> 
                 <div className="dropdown show">
                     <div className="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i className="fa-solid fa-list-ul"></i>

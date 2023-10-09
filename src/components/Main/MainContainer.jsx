@@ -11,10 +11,12 @@ export default function Main() {
   return (
     <main>
       <NavbarMain />
+     
       <Routes>
-        <Route path="/" element={<MainSection />} />
-        <Route path="/:leagueName" element={<League/>} />
+          <Route path="/" element={<MainSection />} />
+          <Route path="/:leagueName" element={<League key="leaugeName"/>} />
       </Routes>
+      
     </main>
   );
 }

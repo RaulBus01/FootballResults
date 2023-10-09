@@ -3,6 +3,7 @@ import { Container, NavLink, Navbar } from "react-bootstrap";
 import LeagueHeader from "../LeagueHeader/LeagueHeader";
 import "bootstrap/js/src/dropdown.js";
 import { useNavigate } from "react-router-dom";
+import Header from "../Header/Header";
 export default function NavbarMain() {
     const styleNormal = {
         backgroundColor: "#698269",
@@ -21,6 +22,8 @@ export default function NavbarMain() {
     const navigate = useNavigate();
     
     return (
+    <>
+    <Header/>
     <nav className="navbar navbar-expand-xl " sticky="top" style={styleNormal}>
         <div className="navbar-nav" style={styleNormal} >
                 <NavLink  onClick={()=> navigate("/PremierLeague")}>
@@ -38,9 +41,9 @@ export default function NavbarMain() {
                 <NavLink onClick={()=> navigate("/Ligue1")}>
                     <LeagueHeader name="Ligue 1"logo="src\assets\LeagueLogo\logo-Ligue1.png" />
                 </NavLink>
-                <NavLink onClick={()=> navigate("/ChampionsLeague")}>
+                {/* <NavLink onClick={()=> navigate("/ChampionsLeague")}>
                     <LeagueHeader name="Champions League"logo="src\assets\LeagueLogo\logo-UCL.png" />
-                </NavLink>
+                </NavLink> */}
                 
                 <NavLink> 
                 <div className="dropdown show">
@@ -55,5 +58,7 @@ export default function NavbarMain() {
                 </NavLink>
                 
         </div>
-    </nav>)
+    </nav>
+    </>
+    )
     }

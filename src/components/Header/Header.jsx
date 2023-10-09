@@ -1,16 +1,15 @@
-import React from "react";
-import { useState } from "react";
-import Navbar from "react-bootstrap/Navbar";
-
+import React, { useContext } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Form, Button, Row, Col } from "react-bootstrap";
 import './Header.css'
-import "bootstrap/js/src/collapse.js";
+
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../Auth";
+import { toast } from "react-toastify";
 
 export default function Header ()
 {
-    
+  
     const styleNormal = {
         backgroundColor: "#4E6C50",
         maxHeight: '90px',
@@ -25,13 +24,26 @@ export default function Header ()
     }
    
     const navigate = useNavigate();
+    const { logout } = useAuth();
+    const handleLogout = async (event) => {
+      event.preventDefault();
+      try {
+        await logout();
+        navigate("/login");
+        toast.success("Logged out successfully!");
+      }
+      catch(error) {
+        console.log(error);
+      }
+    };
+
  
       return (
       
         
         <nav className="navbar navbar-expand-md bg-body-transparent " fixed="top"  style={styleNormal}>
             <div className="container-fluid">
-            <div className="navbar-brand" onClick={()=>navigate("./")}>
+            <div className="navbar-brand" onClick={()=>navigate("/")}>
             <img className="football-png" src="src\assets\football.svg" alt="logo" />
                 <img className="logo-png" src="src\assets\Flash.png" alt="logo" />
             
@@ -62,12 +74,18 @@ export default function Header ()
                 </button>
                 
                 <div className="buttons-container"> 
-                  <button className="logIn-btn" type="button">
-                    <i className="fas fa-user " aria-hidden="true" ></i> 
-                    <span className="logIn-btn-text">Log In</span>
-                  </button>
                 
+                <form onSubmit={handleLogout}>
+                  <button className="logIn-btn" type="submit">
+                    <i className="fas fa-user " aria-hidden="true" ></i> 
+                    <span className="logIn-btn-text">Log Out</span>
+                  </button>
+                </form>
                 </div>
+                  
+
+                
+              
             
                 
             </div>

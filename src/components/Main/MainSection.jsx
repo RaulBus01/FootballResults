@@ -43,14 +43,18 @@ export default  function mainSection() {
     React.useEffect(() => {
         
             if(!date) return;
+
        
           try {
             const apiKey = '8c3dd87f26484a128ebf95024ee0ff3f';
-            const url = '/v4/matches';
+            const url = '/v4/matches/';
          
             const querryDate = formatDate(date);
+            console.log(querryDate);
           
             const query = url +`?date=${querryDate}`;
+         
+            
             const options = {
               method: 'GET',
               headers: { 'X-Auth-Token': apiKey },
@@ -60,6 +64,8 @@ export default  function mainSection() {
            fetch(query, options)
            .then(res => res.json())
            .then(data => setMatches(data.matches))
+        
+           
 
         }catch(error)
         {
@@ -107,7 +113,7 @@ export default  function mainSection() {
     function getMatchesByCompetition()
     {
         const matchesFiltered = {};
-
+   
         matches.forEach((match) => {
           const competitionId = match.competition.id;
           if (!matchesFiltered[competitionId]) {
@@ -124,6 +130,7 @@ export default  function mainSection() {
     },[matches]);
 
     console.log(matchByCompetition);
+    
    
 
 

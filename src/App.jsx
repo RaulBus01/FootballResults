@@ -11,9 +11,9 @@ function App() {
     <div className="app">
       <AuthProvider>
         <Routes>
-          <Route element={<ProtectedRoute />}>
+     
             <Route path="*" element={<MainContainer />} />
-          </Route>
+          
           <Route path="/login" element={<LogIn />} />
         </Routes>
       </AuthProvider>

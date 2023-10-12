@@ -1,14 +1,11 @@
 import React from "react";
 import "./LogIn.css";
 
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../../firebase-config";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../Auth";
+
 export default function LogIn() {
   const [registerName, setRegisterName] = React.useState("");
   const [registerEmail, setRegisterEmail] = React.useState("");
@@ -21,7 +18,7 @@ export default function LogIn() {
   const navigate = useNavigate();
 
   
-  const { login } = useAuth();
+  const { login,register } = useAuth();
   const handleLogin =  async (event) => {
     event.preventDefault();
     try {
@@ -35,6 +32,11 @@ export default function LogIn() {
   }
   const handleRegister = async (event) => {
     event.preventDefault();
+    if(registerEmail === "" || registerPassword === "" || registerName === "" || registerPasswordConfirm === "")
+    {
+      toast.error("Please fill all the fields!");
+      return;
+    }
     if(registerPassword !== registerPasswordConfirm)
     {
       toast.error("Passwords do not match!");
@@ -51,18 +53,28 @@ export default function LogIn() {
       return;
     }
     try {
-      await createUserWithEmailAndPassword(auth, registerEmail, registerPassword);
+      const userCredential = await register(registerEmail, registerPassword);
+      const user = userCredential.user;
+      await updateProfile(user, {
+        displayName: registerName,
+      });
       toast.success("Registered successfully!");
+      
       navigate("/");
     }
     catch(error) {
-      if(error.code.includes("auth/email-already-in-use"))
+      if(error.code.includes("email-already-use"))
+      {
         toast.error("Email already in use!");
+      }
       else
-        toast.error("Something went wrong!");
+        {
+          toast.error("An error occured!");
+        }
     }
+    
   }
-
+  
 
   return (
     <div className="login-container-body">

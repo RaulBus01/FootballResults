@@ -5,6 +5,7 @@ import NavbarMain from "./NavbarMain";
 import MainSection from "./MainSection";
 import League from "../League/League.jsx";
 import { Routes, Route } from "react-router-dom";
+import Favorite from "../Favorite/Favorite";
 
 export default function Main() {
 
@@ -15,6 +16,7 @@ export default function Main() {
       <Routes>
           <Route path="/" element={<MainSection />} />
           <Route path="/:leagueName" element={<League key="leaugeName"/>} />
+          <Route path="/favorite" element={<Favorite />} />
       </Routes>
       
     </main>

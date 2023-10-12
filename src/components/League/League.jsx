@@ -158,7 +158,7 @@ export default function League()
             }
     
             const data = await response.json();
-            console.log(data);
+           
             setStandingsData(data);
         } catch (error) {
             console.error(error);
@@ -178,7 +178,7 @@ export default function League()
 
     
         React.useEffect(() => {
-            console.log("Effect")
+            
             const fetchData = async () => {
              await getData();
              await getStandingsData();

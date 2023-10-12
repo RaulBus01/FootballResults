@@ -38,6 +38,7 @@ export default function LiveLeague(props)
          { props.matches && props.matches.map((match) => (
               <LiveMatch
               key={match.id}
+              area={match.area}
               startTime={match.utcDate}
               homeTeam={match.homeTeam}
               awayTeam={match.awayTeam}
@@ -51,7 +52,8 @@ export default function LiveLeague(props)
               matchday={match.matchday}
               group={match.group}
               date={match.utcDate}
-                matchId={match.id}
+              id={match.id}
+              isFavorite={props.isFavorite}
             
               />
           ))

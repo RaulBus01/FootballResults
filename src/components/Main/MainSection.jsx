@@ -50,7 +50,7 @@ export default  function mainSection() {
             const url = '/v4/matches/';
          
             const querryDate = formatDate(date);
-            console.log(querryDate);
+          
           
             const query = url +`?date=${querryDate}`;
          
@@ -128,10 +128,6 @@ export default  function mainSection() {
         
      
     },[matches]);
-
-    console.log(matchByCompetition);
-    
-   
 
 
     return(

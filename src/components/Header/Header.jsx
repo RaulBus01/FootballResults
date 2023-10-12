@@ -6,6 +6,7 @@ import './Header.css'
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../Auth";
 import { toast } from "react-toastify";
+import { auth } from "../../firebase-config";
 
 export default function Header ()
 {
@@ -18,10 +19,9 @@ export default function Header ()
         
         
       };
-    const searchStyle = {
-        backgroundColor: "transparent",
-        maxHeight: '50px',   
-    }
+   
+    const user = auth.currentUser;
+    
    
     const navigate = useNavigate();
     const { logout } = useAuth();
@@ -31,6 +31,7 @@ export default function Header ()
         await logout();
         navigate("/login");
         toast.success("Logged out successfully!");
+        
       }
       catch(error) {
         console.log(error);
@@ -49,39 +50,21 @@ export default function Header ()
             
             </div>
             
-             <button
-             className="navbar-toggler" 
-             type="button" 
-             data-bs-toggle="collapse" 
-             data-bs-target="#navbarNav" 
-             aria-controls="navbarNav"
-             aria-expanded="false" 
-             aria-label="Toggle navigation">
-              <span className="navbar-toggler-icon"></span>
-             </button> 
-             <div className="collapse navbar-collapse" id="navbarNav" >
-             <Form.Control
-                  type="search"
-                  placeholder="Search"
-                  className="me-2 ms-auto"
-                  aria-label="Search"
-                style={searchStyle}
-              
-                
-                />
-                <button  className="search-btn" type="button">
-                <i className="fas fa-search"></i>
-                </button>
-                
+             
+          
                 <div className="buttons-container"> 
-                
+                <button className="account-btn" type="button" >
+                  <i className="fas fa-user " aria-hidden="true" ></i>
+                  {user && <span className="account-btn-text">{user.displayName}</span> }
+                </button>
                 <form onSubmit={handleLogout}>
+
                   <button className="logIn-btn" type="submit">
-                    <i className="fas fa-user " aria-hidden="true" ></i> 
-                    <span className="logIn-btn-text">Log Out</span>
+                  <i className="fa-solid fa-right-from-bracket" aria-hidden="true" alt="logout"></i>
+                    <span className="logIn-btn-text"></span>
                   </button>
                 </form>
-                </div>
+                
                   
 
                 

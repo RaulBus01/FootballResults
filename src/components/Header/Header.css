@@ -35,18 +35,20 @@
 
 
 
-.logIn-btn
+.logIn-btn,.account-btn
 {
   background-color: #395144;
   border: none;
   border-radius: 10px;
   display: flex;
+  color: white;
   align-items: center;
   padding: 10px;
   height: 40px;
+  margin-right: 10px;
  
 }
-.logIn-btn:hover
+.logIn-btn:hover,.account-btn:hover
 {
     background-color: #183A1D;
     transform: scale(0.9);

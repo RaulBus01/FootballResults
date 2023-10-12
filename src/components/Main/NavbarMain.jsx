@@ -4,6 +4,10 @@ import LeagueHeader from "../LeagueHeader/LeagueHeader";
 import "bootstrap/js/src/dropdown.js";
 import { useNavigate } from "react-router-dom";
 import Header from "../Header/Header";
+import {auth } from "../../firebase-config";
+
+
+
 export default function NavbarMain() {
     const styleNormal = {
         backgroundColor: "#698269",
@@ -20,12 +24,23 @@ export default function NavbarMain() {
         
     }
     const navigate = useNavigate();
+    const user = auth.currentUser;
+
+    
+
+  
     
     return (
     <>
     <Header/>
-    <nav className="navbar navbar-expand-xl " sticky="top" style={styleNormal}>
+ 
         <div className="navbar-nav" style={styleNormal} >
+                <NavLink className="favorite-header" onClick={ ()=>navigate("/favorite")}>
+                    
+                    <i className="fa-regular fa-star"></i>
+                   <span className="favorite-text">Favorites</span>
+
+                </NavLink>
                 <NavLink  onClick={()=> navigate("/PremierLeague")}>
                     <LeagueHeader name="Premier League" logo=".\src\assets\LeagueLogo\logo-EPL.png" />
                 </NavLink>
@@ -41,10 +56,7 @@ export default function NavbarMain() {
                 <NavLink onClick={()=> navigate("/Ligue1")}>
                     <LeagueHeader name="Ligue 1"logo="src\assets\LeagueLogo\logo-Ligue1.png" />
                 </NavLink>
-                {/* <NavLink onClick={()=> navigate("/ChampionsLeague")}>
-                    <LeagueHeader name="Champions League"logo="src\assets\LeagueLogo\logo-UCL.png" />
-                </NavLink> */}
-                
+        
                 <NavLink> 
                 <div className="dropdown show">
                     <div className="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -58,7 +70,7 @@ export default function NavbarMain() {
                 </NavLink>
                 
         </div>
-    </nav>
+ 
     </>
     )
     }

@@ -1,8 +1,15 @@
-# React + Vite
+# FlashGoal
+This project is a website with football matches, results and standings.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Before logging in:<br/>
+-User can search for football matches,results and standings for each league available.<br/>
+-User can login on the login button.<br/>
 
-Currently, two official plugins are available:
+After logging in:<br/>
+-User can add to list of favorites matches and after can accsses the section favorites where all favorite matches are displayed.<br/>
+-User can accses account information on section account.<br/>
+-User can logout on logout button.<br/>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+Technologies used for this project:<br/>
+-HTML,CSS,JavaScript,Firesotre,Bootstrap and an API for fetchind football data.

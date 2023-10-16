@@ -5,6 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../Auth";
+import { updateProfile } from "firebase/auth";
 
 export default function LogIn() {
   const [registerName, setRegisterName] = React.useState("");
@@ -18,7 +19,7 @@ export default function LogIn() {
   const navigate = useNavigate();
 
   
-  const { login,register } = useAuth();
+  const { login,register,loginWithGoogle } = useAuth();
   const handleLogin =  async (event) => {
     event.preventDefault();
     try {
@@ -28,6 +29,18 @@ export default function LogIn() {
     }
     catch(error) {
       console.log(error);
+    }
+  }
+  const handleLoginWithGoogle = async (event) => {
+    event.preventDefault();
+    try {
+      await loginWithGoogle();
+      toast.success("Logged in successfully!");
+      navigate("/");
+    }
+    catch(error) {
+      console.log(error);
+      toast.error("An error occured!");
     }
   }
   const handleRegister = async (event) => {
@@ -58,19 +71,19 @@ export default function LogIn() {
       await updateProfile(user, {
         displayName: registerName,
       });
-      toast.success("Registered successfully!");
-      
+      await toast.promise(
+        Promise.resolve("Registered successfully!"),
+        {
+          pending: "Registering...",
+          success: "Registered successfully!",
+          error: "An error occurred!",
+        }
+      ).then(() => {
       navigate("/");
+      });
     }
     catch(error) {
-      if(error.code.includes("email-already-use"))
-      {
-        toast.error("Email already in use!");
-      }
-      else
-        {
-          toast.error("An error occured!");
-        }
+      console.log(error);
     }
     
   }
@@ -110,7 +123,7 @@ export default function LogIn() {
                         <form onSubmit={handleLogin}>
                         <h4>Log In
                         <div className="social-container">
-                          <a href="#" className="social"><i className="fab fa-google-plus-g"></i></a>
+                          <a href="#" className="social"><i className="fab fa-google-plus-g" onClick={handleLoginWithGoogle}></i></a>
                        
                         </div>
                           <p >

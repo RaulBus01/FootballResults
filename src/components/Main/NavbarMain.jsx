@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, NavLink, Navbar } from "react-bootstrap";
+import { Container, Nav, NavLink, Navbar } from "react-bootstrap";
 import LeagueHeader from "../LeagueHeader/LeagueHeader";
 import "bootstrap/js/src/dropdown.js";
 import { useNavigate } from "react-router-dom";
@@ -64,7 +64,20 @@ export default function NavbarMain() {
                     </div>
 
                     <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                      
+                    <NavLink onClick={()=> navigate("/Eredivisie")}>
+                        <LeagueHeader name="Eredivisie" />
+                    </NavLink>
+                    <NavLink onClick={()=> navigate("/PrimeiraLiga")}>
+                        <LeagueHeader name="Primeira Liga" />
+                    </NavLink>
+                    
+                    <NavLink onClick={()=> navigate("/BrasilSeriaA")}>
+                        <LeagueHeader name="Brasil Seria A" />
+                    </NavLink>
+                    <NavLink onClick={()=> navigate("/Championship")}>
+                        <LeagueHeader name="Championship" />
+                    </NavLink>
+
                     </div>
                     </div>
                 </NavLink>

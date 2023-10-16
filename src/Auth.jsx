@@ -4,6 +4,9 @@ import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
+  deleteUser,
+  GoogleAuthProvider,
+  signInWithPopup,
 } from 'firebase/auth';
 import { auth } from './firebase-config';
 
@@ -22,6 +25,14 @@ export const AuthProvider = ({ children }) => {
   const register = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
+  const deleteAccount = () => {
+    return deleteUser(auth.currentUser);
+  };
+  const loginWithGoogle = () => {
+    const provider = new GoogleAuthProvider();
+    return signInWithPopup(auth, provider);
+  };
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
@@ -41,6 +52,8 @@ export const AuthProvider = ({ children }) => {
     logout,
     login,
     register,
+    deleteAccount,
+    loginWithGoogle,
   };
  
   return (

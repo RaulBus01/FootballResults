@@ -29,7 +29,8 @@ export default function LiveMatch(props)
             console.log("openPreview");
             setPreview(!preview);
         }
-    const [favorite, setFavorite] = React.useState(false);
+
+
     
     const user = auth.currentUser;
     
@@ -43,7 +44,6 @@ export default function LiveMatch(props)
         try{
          const docRef = doc(matchCollectionRef, props.id.toString());
          setDoc(docRef, {...props,key : props.id,
-            
             score: {
             halfTime: {
               home: props.halfTimeHomeTeamScore,

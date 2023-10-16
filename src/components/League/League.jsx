@@ -22,7 +22,7 @@ export default function League()
         { id: 2019, name: "SerieA" },
         { id: 2003, name: "Eredivisie" },
         { id: 2014, name: "LaLiga" },
-        { id: 2017, name: "LigaNos" },
+        { id: 2017, name: "PrimeiraLiga" },
         { id: 2016, name: "Championship" },
         { id: 2013, name: "BrasilSeriaA" },
       ];

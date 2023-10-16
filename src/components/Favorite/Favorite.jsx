@@ -37,10 +37,7 @@ export default function Favorite()
         return () => unsubscribe();
       }, [user, db]);
       
-      React.useEffect(() => {
- 
-        localStorage.setItem("favoriteMatches", JSON.stringify(favoriteMatches));
-      }, [favoriteMatches]);
+      console.log(favoriteMatches[2002]);
       
     return(
         <div className="favorite-container">
@@ -55,6 +52,7 @@ export default function Favorite()
                     competitionName={favoriteMatches[competitionId][0].competition.name}
                     competitionLogo={favoriteMatches[competitionId][0].competition.emblem}
                     matches={favoriteMatches[competitionId]}
+                   startTime={favoriteMatches[competitionId][0].utcDate===null ? "":favoriteMatches[competitionId][0].date}
                     countryFlag={favoriteMatches[competitionId][0].area.flag}
                     isFavorite={true}
                     

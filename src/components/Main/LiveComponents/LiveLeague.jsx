@@ -39,7 +39,7 @@ export default function LiveLeague(props)
               <LiveMatch
               key={match.id}
               area={match.area}
-              startTime={match.utcDate}
+              startTime={match.utcDate===undefined ? match.startTime:match.utcDate}
               homeTeam={match.homeTeam}
               awayTeam={match.awayTeam}
               halfTimeHomeTeamScore={match.score.halfTime.home}
@@ -51,7 +51,7 @@ export default function LiveLeague(props)
               stage={match.stage}
               matchday={match.matchday}
               group={match.group}
-              date={match.utcDate}
+              date={match.utcDate===undefined ? match.startTime:match.utcDate}
               id={match.id}
               isFavorite={props.isFavorite}
             

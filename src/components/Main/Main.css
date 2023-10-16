@@ -1,0 +1,161 @@
+.main{
+   
+    background-color: #698269;
+}
+
+
+
+
+.league-logo
+{
+    width: 35px;
+    height: 35px;
+    margin-right: 10px;
+}
+.league-name
+{
+    font-size: 18px;
+    font-weight: bold;
+    width: 100%;
+    text-overflow: ellipsis ;
+}
+.league-container,.favorite-header
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+}
+.favorite-text
+{
+    font-size: 18px;
+    margin-left: 10px;
+    font-weight: bold;
+    width: 100%;
+    text-overflow: ellipsis ;
+}
+
+.league-container:hover,.favorite-header:hover
+{
+    background-color: #63706b;
+    cursor: pointer;
+    
+}
+.dropdown-toggle
+{
+    background-color: #63706b;
+    border-radius:10px;
+    color: black;
+    margin-right: auto;
+}
+.dropdown-toggle:hover
+{
+    background-color: #183A1D;
+    transform: scale(0.9);
+    transition: 0.3s;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #F0EBCE;
+}
+.dropdown-menu
+{
+    left:0;
+    
+    background-color: #63706b;
+    border-radius:10px;
+    color: black;
+
+
+}
+.mainBody
+{
+    padding-top: 10px;
+    background-color: #053B50;
+    min-height: calc(100vh);
+    
+    display: flex;
+    
+    justify-content: center;
+    
+   
+}
+.liveTable
+{
+    background-color: #176b8777;
+    color: black;
+    width: 60%;
+    margin: 20px;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.liveTableHeader
+{
+    display : flex;
+    align-items: center;
+    justify-content: space-between;
+ 
+    
+  
+}
+label
+{
+    background-color: transparent;
+    color: white;
+
+    
+    margin-right: 20px;
+    font-size: 16px;
+}
+.calendar
+{
+   display: flex;
+   margin-right:20px;
+  
+   
+
+}
+.nextDay,.previousDay{
+    background-color:#176B87;
+    border-radius: 10px;
+    border-color: transparent;
+    font-size: 8px;
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.nextDay:hover,.previousDay:hover
+{
+    background-color: #053B50;
+    cursor: pointer;
+    transform: scale(0.9);
+    transition: 0.3s;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #F0EBCE;
+}
+.calendarMenu
+{
+    
+    background-color: #176B87;
+    
+    border-radius: 10px;
+    border-color: transparent;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    
+    
+}
+.calendarMenu:hover{
+    background-color: #053B50;
+    cursor: pointer;
+
+    transition: 0.3s;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #F0EBCE;
+}
+.fa-calendar
+{
+    margin-right: 5px;
+}

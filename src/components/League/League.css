@@ -1,0 +1,231 @@
+.container-league
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    background-color: #283739;
+    
+}
+.container-league-header
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    
+}
+.detail-league
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+.league-header
+{
+    
+    display: flex;
+    align-items: center;
+    width: 60%;
+    background-color: #5C8984;
+    margin-top:2rem;
+    border-radius: 15px;
+ }
+ .league-header-logo
+ {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 2rem;
+ }
+ .logo-header
+ {
+    width: 6rem;
+ 
+
+    background-color: white;
+    border-radius: 20px;
+    margin-right: 20px;
+ }
+.container-league-body
+{
+    display: flex;
+    flex-direction: column;
+}
+.container-league-body-header
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.container-league-body-content
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.league-body-header
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 60%;
+    background-color: #5C8984;
+    margin-top:1rem;
+    border-radius: 15px;
+}
+.last-results,.next-matches,.standings
+{
+    
+    background-color: transparent;
+    border: none;
+    margin-left:1rem;
+    margin-right:1rem;
+    
+}
+.last-results:hover,.next-matches:hover,.standings:hover
+{
+    background-color: #053b5096;
+    border-radius: 10px;
+    color: white;
+}
+.league-body-content-next-matches,.league-body-content-last-results
+{
+    color:white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width:60%;
+}
+.league-body-content-standings
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+}
+h3
+{
+    font-size: 1.5rem;
+}
+button.selected
+{
+    color:aliceblue;
+    background-color: #053B50;
+    border-radius: 10px;
+    
+}
+.text{
+    color: white;
+    font-size: 1.5rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    background-color: transparent;
+    border: none;
+    border-radius: 10px;
+}
+.season-btn
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.5rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    background-color:  #42a583;
+    border: none;
+    border-radius: 10px;
+}
+table{
+    border-radius: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+
+
+}
+.dropdown-menu
+{
+    left:0;
+    background-color: #63706b;
+    border-radius:10px;
+    color: black;
+}
+
+.table td 
+{
+        height: 5rem;
+     
+}
+      
+    
+
+.position-row
+{
+    
+    display: flex;
+
+  justify-content: center;
+    align-items: center;
+    text-align: center;
+
+}
+
+
+
+.logo-team
+{
+    width: 3rem;
+    height: rem;
+    background-color: white;
+    border-radius: 10px;
+    padding: 5px;
+    margin-right: 20px;
+}
+.form-row {
+    display: flex;
+    height:5rem;
+    align-items: center;
+  }
+
+  
+  .form-W,
+  .form-D,
+  .form-L {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-weight: bold;
+    font-size: 1rem;
+    width: 1.5rem; 
+    height: 1.5rem; 
+    border-radius: 5px;
+    padding: 5px;
+    margin-right: 20px;
+  }
+
+.form-W {
+    background-color: #008080;
+}
+
+.form-D {
+    background-color: #E9B824;
+}
+
+.form-L {
+    background-color: #D83F31;
+}
+

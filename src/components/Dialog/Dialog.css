@@ -1,0 +1,141 @@
+.dialog-container
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #376c81a9;
+    min-height: calc(100vh);
+    padding: 10px;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.dialog
+{
+    background-color: #376c81;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    min-height: 50%;
+    color: white;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #1a1b36;
+}
+.dialog-button-cancel,.dialog-button-delete
+{
+    
+    border: none;
+    border-radius: 10px;
+    color: white;
+    
+    padding: 10px;
+    height: 40px;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+   
+}
+.dialog-button-delete
+{
+    background-color: #d9534f;
+}
+.dialog-button-cancel
+{
+    background-color: #232d61
+}
+.dialog-button-cancel:hover,.dialog-button-delete:hover
+{
+    cursor: pointer;
+    transform: scale(0.9);
+    transition: 0.3s;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #F0EBCE;
+    color:#F0EBCE;
+}
+.dialog-input-container
+{
+    display: flex;
+    flex-direction: column;
+}
+.dialog-input
+{
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 15rem;
+    height: 40px;
+    font-size: 20px;
+    background-color: #4a7e73;
+
+    color: rgb(255, 255, 255);
+   
+}
+.dialog-input:hover{
+    cursor: pointer;
+    transform: scale(0.9);
+    transition: 0.3s;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #F0EBCE;
+    color:#F0EBCE;
+}
+.dialog-input:focus
+{
+    outline: none;
+}
+.dialog-input:active
+{
+    transform: scale(1);
+    transition: 0.1s;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #F0EBCE;
+}
+.dialog-input::placeholder
+{
+    font-size: 18px;
+    color: rgb(255, 255, 255);
+}
+.dialog-form-container
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.dialog-input-unhide
+{
+    border: none;
+    border-radius: 10px;
+ 
+    margin-left: 25px;
+
+   
+    height: 40px;
+    font-size: 20px;
+    background-color: transparent;
+    color: rgb(255, 255, 255);
+}
+.dialog-input-unhide:hover
+{
+    cursor: pointer;
+    transform: scale(0.9);
+    transition: 0.3s;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #F0EBCE;
+    color:#F0EBCE;
+}
+.dialog-input-unhide:active
+{
+    transform: scale(1);
+    transition: 0.1s;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #F0EBCE;
+}
+#iconEye
+{
+    width: 1.5rem;
+    
+}
+

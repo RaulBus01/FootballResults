@@ -1,0 +1,155 @@
+
+.logo
+{
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}
+.logo-png
+{
+  
+ 
+  height: 50px;
+  margin-top: 0;
+  margin-right: 20px;
+  margin-left: 10px
+}
+.football-png
+{
+  width: 50px;
+  margin-left: 20px;
+
+}
+.container-fluid
+{
+  max-height: 100%;
+  height: 100%;
+}
+.navbar-brand:hover
+{
+  cursor: pointer;
+  scale:1.1;
+  transition: 0.3s;
+  
+}
+
+
+
+.logIn-btn,.account-btn
+{
+  background-color: #395144;
+  border: none;
+  border-radius: 10px;
+  display: flex;
+  color: white;
+  align-items: center;
+  padding: 10px;
+  height: 40px;
+  margin-right: 10px;
+ 
+}
+.logIn-btn:hover,.account-btn:hover
+{
+    background-color: #183A1D;
+    transform: scale(0.9);
+    transition: 0.3s;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #F0EBCE;
+    color:#F0EBCE;
+
+}
+
+.logIn-btn-text
+{
+  clear: both;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+  
+}
+.fa-solid.fa-user-check
+{
+
+    margin-right: 10px;
+}
+.fa-solid.fa-file-invoice,.fa-solid.fa-key,
+.fa-solid.fa-sign-out,.fa-regular.fa-trash-can
+{
+  width: 20px;
+    margin-left: 10px;
+}
+
+.search-btn
+{
+  background-color: #395144;
+  border: none;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+
+}
+.search-btn:hover
+{
+    background-color: #183A1D;
+    transform: scale(0.9);
+    transition: 0.3s;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #F0EBCE;
+    color:#F0EBCE;
+}
+
+.me-2
+{
+    border-color: #395144;
+    box-shadow: none;
+    max-width: 25%;
+    float:right;
+   
+}
+.navbar-toggler
+{
+  margin-right: 20px;
+  
+ 
+}
+.me-2:focus
+{
+    border-color: #F0EBCE;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #F0EBCE;
+    color:#F0EBCE;
+}
+.buttons-container
+{
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+  
+  margin-right: 20px;
+  margin-left: 20px ;
+  max-width: 100%;
+}
+.dropdown-list-item
+{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 10px;
+
+}
+.dropdown-list-item:hover
+{
+  background-color: #183A1D;
+  transform: scale(0.9);
+  transition: 0.3s;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #F0EBCE;
+  color:#F0EBCE;
+}
+.dropdown-item
+{
+  
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+
+

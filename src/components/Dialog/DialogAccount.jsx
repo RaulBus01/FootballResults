@@ -6,9 +6,15 @@ export default function DialogAccount(props)
 {
     return (
         <div className="dialog-container">
-            <div className="dialog">
-                <h2 className="dialog-title">Account</h2>
-                <p className="dialog-text">Account info</p>
+            <div className="dialog-account">
+                <h2 className="dialog-title">Account Info </h2>
+                <div className="account-info" >
+                    <p className="dialog-text">Email:{props.email}</p>
+                    <p className="dialog-text">Username:{props.username}</p>
+                </div>
+               
+             
+
                 <div className="dialog-buttons">
                     <button className="dialog-button-cancel" onClick={()=>props.toggleDialog("accountInfo")}>Cancel</button>
                     <button className="dialog-button-delete" onClick={()=>

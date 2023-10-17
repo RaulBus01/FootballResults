@@ -23,7 +23,7 @@ export default function Header ()
    
     const user = auth.currentUser;
     
-   
+    console.log(user);
     const navigate = useNavigate();
     const { logout } = useAuth();
     const handleLogout = async (event) => {
@@ -105,7 +105,10 @@ export default function Header ()
             </div>
               {showDeleteAccountDialog && <DialogDelete toggleDialog={toggleDialog} />}
               {showChangePasswordDialog && <DialogChangePassword toggleDialog={toggleDialog} />}
-              {showAccountInfoDialog && <DialogAccount toggleDialog={toggleDialog} />}
+              {showAccountInfoDialog && <DialogAccount 
+                email={user.email}
+                username={user.displayName}
+                toggleDialog={toggleDialog}  />}
             
             </nav>
         

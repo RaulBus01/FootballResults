@@ -32,13 +32,30 @@ export default function League()
       setSelectedButton(buttonName);
       
     };
-   
+    const [selectedStandingsButton, setSelectedStandingsButton] = useState("total");
     const [competitionData,setCompetitonData] = useState([]);
     const [playedMatches,setPlayedMatches] = useState([]);
     const [upcomingMatches,setUpcomingMatches] = useState([]);
 
     const [standingsData,setStandingsData] = useState([]);
-
+    const [index,setIndex] = useState(0);
+    const standingsButton = (buttonName) =>
+    {
+        setSelectedStandingsButton(buttonName);
+        if(buttonName === "total")
+        {
+            setIndex(0);
+        }
+        if(buttonName === "home")
+        {
+            setIndex(1);
+        }
+        if(buttonName === "away")
+        {
+            setIndex(2);
+        }
+        
+    }
     function groupByMatchday(matches) {
         const groupedMatches = [];
         matches.forEach((match ) =>
@@ -193,7 +210,7 @@ export default function League()
     
     
 
-   
+        
     
  
    
@@ -212,12 +229,12 @@ export default function League()
                         </div>
                         <div className="league-header-season">
                             <button className="season-btn" aria-expanded="false" id="dropdownSeaasonButton"  type="button" data-bs-toggle="dropdown" aria-haspopup="true">
-
+                                <i className="fas fa-calendar-alt"></i>
                                 <span className="season-text">{season}</span>
                             </button>
                             <div className="dropdown-menu"  aria-labelledby="dropdownSeasonButton">
                             {seasonArray.map((season) => (
-                                <button className="dropdown-item" type="button" key={season.id} onClick={selectSeason}>
+                                <button className="dropdown-item-season" type="button" key={season.id} onClick={selectSeason}>
                                     {season.season}
                                 </button>
                             
@@ -296,8 +313,15 @@ export default function League()
                         }
                         
                         
-                        
-                        { selectedButton === 'standings' && <div className="league-body-content-standings">
+                      
+                        { selectedButton === 'standings' && 
+                        <div className="league-body-content">
+                             <div className="league-body-content-standings-header">
+                                <button className={`total-btn ${selectedStandingsButton === "total" ? 'selected' : ""}`} onClick={()=>standingsButton("total")}>Total</button>
+                                <button className={`home-btn ${selectedStandingsButton === "home" ? 'selected' : ""}`} onClick={()=>standingsButton("home")}>Home</button>
+                                <button className={`away-btn ${selectedStandingsButton === "away" ? 'selected' : ""}`} onClick={()=>standingsButton("away")}>Away</button>
+                            </div>
+                            <div className="league-body-content-standings">
                             <table className="table table-dark table-striped ">
                             <thead>
                                 <tr className="standings-header">
@@ -309,11 +333,11 @@ export default function League()
                                     <th className="loses-header">L</th>
                                     <th className="goals-header">G</th>
                                     <th className="points-header">Pts</th>
-                                    <th className="form-header">Form</th>
+                                    {index === 0 && <th className="form-header">Form</th> }
                                 </tr>
                             </thead>
                             <tbody>
-                                {standingsData.standings[0].table.map((team) => (
+                                {standingsData.standings[index].table.map((team) => (
                                  
                                     <tr key={team.team.id} className="standings-row">
                                         <td className="position-row">
@@ -335,21 +359,26 @@ export default function League()
                                             {team.goalsFor} : {team.goalsAgainst}
                                         </td>
                                         <td className="points-row">{team.points}</td>
-                                        <td className="form-row" > 
+                                        {index === 0 && 
+                                            <td className="form-row" > 
                                             {team.form.split(',').map((result,index) => (
 
                                                
                                                  <span key={index}className={`form-${result}`}>{result}</span>
                                               
                                             ))}
-                                        </td>
+                                        
+                                        
+                                            </td>
+                                        }
 
 
                                     </tr>
                                 ))}
                             </tbody>
                             </table>
-                             </div>
+                            </div>
+                        </div>
 
                         }
                        

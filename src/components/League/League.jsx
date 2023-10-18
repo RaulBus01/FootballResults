@@ -6,6 +6,7 @@ import { useState } from "react";
 import Matchday from "./Matchday";
 
 import {useParams} from "react-router-dom";
+import { toast } from "react-toastify";
 export default function League()   
 {
     const [selectedButton, setSelectedButton] = useState("last-results");
@@ -120,7 +121,7 @@ export default function League()
         .then(res => res.json())
         .then(data => {
       
-            console.log(data);
+         
           const finishedMatches = data.matches.filter(match => match.status === 'FINISHED');
           const upcomingMatches = data.matches.filter(match => match.status === 'SCHEDULED' || match.status === 'TIMED');
          
@@ -172,6 +173,7 @@ export default function League()
     
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
+                toast.error("Error");
             }
     
             const data = await response.json();

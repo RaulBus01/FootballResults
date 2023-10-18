@@ -57,7 +57,7 @@ export default function NavbarMain() {
                     <LeagueHeader name="Ligue 1"logo="src\assets\LeagueLogo\logo-Ligue1.png" />
                 </NavLink>
         
-                <NavLink> 
+               
                 <div className="dropdown show">
                     <div className="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i className="fa-solid fa-list-ul"></i>
@@ -80,7 +80,7 @@ export default function NavbarMain() {
 
                     </div>
                     </div>
-                </NavLink>
+                
                 
         </div>
  

@@ -114,7 +114,7 @@ export default  function mainSection() {
     {
         const matchesFiltered = {};
    
-        matches.forEach((match) => {
+       matches && matches.forEach((match) => {
           const competitionId = match.competition.id;
           if (!matchesFiltered[competitionId]) {
             matchesFiltered[competitionId] = [];

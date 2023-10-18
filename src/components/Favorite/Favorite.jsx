@@ -20,7 +20,7 @@ export default function Favorite()
       
         const unsubscribe = onSnapshot(matchCollectionRef, (snapshot) => {
           const updatedMatches = snapshot.docs.map((doc) => doc.data());
-          console.log("Updated matchList:", updatedMatches);
+          
       
           const updatedMatchesSorted = {};
           updatedMatches.forEach((match) => {
@@ -37,7 +37,7 @@ export default function Favorite()
         return () => unsubscribe();
       }, [user, db]);
       
-      console.log(favoriteMatches[2002]);
+
       
     return(
         <div className="favorite-container">

@@ -21,7 +21,7 @@ export default function LiveMatch(props)
         const [preview, setPreview] = React.useState(false);
         function openPreview()
         {
-            console.log("openPreview");
+          
             setPreview(!preview);
         }
        

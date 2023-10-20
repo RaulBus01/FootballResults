@@ -4,8 +4,7 @@ import LivePreview from "./LivePreview.jsx";
 
 import { collection,setDoc, doc,deleteDoc } from "firebase/firestore";
 import {auth,db} from "../../../firebase-config";
-import { set } from "date-fns";
-
+import { useNavigate } from "react-router-dom";
 
 export default function LiveMatch(props)
 {
@@ -33,8 +32,8 @@ export default function LiveMatch(props)
 
     
     const user = auth.currentUser;
-    
-    function addtoFavorites()
+    const navigate = useNavigate();
+    const addtoFavorites = () =>
     {
 
         const matchCollectionRef = collection(db, "users", user.uid,"football","favorites","matches");
@@ -103,16 +102,18 @@ export default function LiveMatch(props)
         </div>
 
         <div className="team-container">
-            <div className="home-team">
+            <div className="home-team" >
+               
+                <div className="team-name " onClick={()=>navigate("/" + props.competition.name +"/team")}>
                 <img src={props.homeTeam.crest} alt="home-team" className="logo-Match"/>
-                <div className="team-name">
                     {props.homeTeam.name}
                 </div>
             
             </div>
-            <div className="away-team">
+            <div className="away-team" >
+               
+                <div className="team-name" onClick={()=>navigate("/" + props.competition.name +"/team")}>
                 <img src={props.awayTeam.crest} alt="away-team" className="logo-Match"/>
-                <div className="team-name">
                     {props.awayTeam.name}
                 </div>
             </div>

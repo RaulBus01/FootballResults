@@ -106,12 +106,64 @@
 
     width:60%;
 }
+.league-body-content
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.league-body-content-standings-header
+{
+    display: flex;
+    margin-top: 2rem; 
+    align-items: center;
+    gap: 1rem;
+    width: 60%;
+    border-radius: 10px;
+    background-color: #212529;
+}
+.total-btn,.home-btn,.away-btn
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.5rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    background-color:  #212529;
+    border: none;
+    border-radius: 10px;
+}
+.away-btn:hover,.home-btn:hover,.total-btn:hover
+{
+   
+    border-radius: 10px;
+    background-color: #053B50;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #dee8ec96;
+    color:aliceblue;
+}
+
 .league-body-content-standings
 {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 60%;
+}
+.total-btn:selected
+{
+    color:aliceblue;
+    background-color: #053B50;
+    border-radius: 10px;
+}
+
+th
+{
+    text-align: center;
+    
 }
 h3
 {
@@ -146,6 +198,22 @@ button.selected
     border: none;
     border-radius: 10px;
 }
+.season-btn:hover
+{
+    color:aliceblue;
+    background-color: #053B50;
+    border-radius: 10px;
+}
+.season-text
+{
+    color: white;
+    font-size: 1.5rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    background-color: transparent;
+    border: none;
+    border-radius: 10px;
+}
 table{
     border-radius: 10px;
     overflow: hidden;
@@ -159,10 +227,30 @@ table{
 .dropdown-menu
 {
     left:0;
-    background-color: #63706b;
+    text-align: center;
+    background-color: #42a583;
     border-radius:10px;
     color: black;
 }
+.dropdown-item-season
+{
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+    width: 100%;
+    color: white;
+    background-color: #42a583;
+    border-radius:10px;
+}
+.dropdown-item-season:hover
+{
+    color:aliceblue;
+    background-color: #053B50;
+    border-radius: 10px;
+}
+
 
 .table td 
 {

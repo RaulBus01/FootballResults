@@ -30,7 +30,7 @@ export default function LivePreview(props)
                fetch(query, options)
                .then(res => res.json())
                .then(data => setMatchData(data))
-               console.log(matchData)
+               
         
             }catch(error)
             {

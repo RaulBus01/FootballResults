@@ -1,13 +1,9 @@
 import React from "react";
 import "./Dialog.css";
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../Auth";
+
 import { reauthenticateWithCredential, updatePassword,EmailAuthProvider } from "firebase/auth";
 import { toast,ToastContainer } from "react-toastify";
-import firebase from "firebase/compat/app";
 import { auth } from "../../firebase-config";
-import e from "cors";
-import { set } from "date-fns";
 export default function DialogChangePass(props)
 {
 

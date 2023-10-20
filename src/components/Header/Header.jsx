@@ -9,6 +9,7 @@ import { auth } from "../../firebase-config";
 import DialogDelete from "../Dialog/DialogDelete.jsx";
 import DialogChangePassword from "../Dialog/DialogChangePass.jsx";
 import DialogAccount from "../Dialog/DialogAccount.jsx";
+import DialogUsername from "../Dialog/DialogUsername.jsx";
 export default function Header ()
 {
   
@@ -23,7 +24,7 @@ export default function Header ()
    
     const user = auth.currentUser;
     
-   
+  
     const navigate = useNavigate();
     const { logout } = useAuth();
     const handleLogout = async (event) => {
@@ -43,6 +44,7 @@ export default function Header ()
     const [showAccountInfoDialog, setShowAccountInfoDialog] = React.useState(false);
     const [showChangePasswordDialog, setShowChangePasswordDialog] = React.useState(false);
     const [showDeleteAccountDialog, setShowDeleteAccountDialog] = React.useState(false);
+    const [showChangeUsernameDialog, setShowChangeUsernameDialog] = React.useState(false);
   
     const toggleDialog = (dialogType) => {
       switch (dialogType) {
@@ -54,6 +56,9 @@ export default function Header ()
           break;
         case 'deleteAccount':
           setShowDeleteAccountDialog(!showDeleteAccountDialog);
+          break;
+       case 'changeUsername':
+          setShowChangeUsernameDialog(!showChangeUsernameDialog);
           break;
         default:
           break;
@@ -105,8 +110,16 @@ export default function Header ()
             </div>
               {showDeleteAccountDialog && <DialogDelete toggleDialog={toggleDialog} />}
               {showChangePasswordDialog && <DialogChangePassword toggleDialog={toggleDialog} />}
-              {showAccountInfoDialog && <DialogAccount toggleDialog={toggleDialog} />}
-            
+              {showAccountInfoDialog && <DialogAccount 
+                email={user.email}
+                username={user.displayName}
+                toggleDialog={toggleDialog}  />}
+              {showChangeUsernameDialog && <DialogUsername toggleDialog={toggleDialog}
+              username={user.displayName}
+              user={user}
+              />}
+              
+                         
             </nav>
         
     )

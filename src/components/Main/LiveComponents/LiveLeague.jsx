@@ -1,6 +1,7 @@
 import React from "react";
 import "./LiveLeague.css";
 import LiveMatch from "./LiveMatch.jsx";
+import { useNavigate } from "react-router-dom";
 export default function LiveLeague(props)
 {
     const [dropdown, setDropdown] = React.useState(true);
@@ -9,7 +10,26 @@ export default function LiveLeague(props)
     {
         setDropdown(!dropdown);
     }
-     
+    const competitions = [
+        { id: 2000, name: "World Cup" },
+        { id: 2018, name: "European Championship" },
+        { id: 2001, name: "Champions League" },
+        { id: 2021, name: "Premier League" },
+        { id: 2002, name: "Bundesliga" },
+        { id: 2015, name: "Ligue 1" },
+        { id: 2019, name: "Serie A" },
+        { id: 2003, name: "Eredivisie" },
+        { id: 2014, name: "La Liga" },
+        { id: 2017, name: "Primeira Liga" },
+        { id: 2016, name: "Championship" },
+        { id: 2013, name: "Campeonato Brasileiro Série A" },
+      ];
+       
+        const competition = competitions.find((competition) => competition.id.toString() === (props.competitionId || props.id));
+        const competitionName = competition ? competition.name : "Unknown";
+        
+
+    const navigate = useNavigate();
 
     return (
         <div className="container">
@@ -19,8 +39,8 @@ export default function LiveLeague(props)
                 <img src={props.countryFlag} alt="country-flag" className="country-flag"/>
             </div>
             <div className="league">
-                <div className="league-name">
-                {props.competitionName}
+                <div className="league-name" onClick={()=>navigate("/"+competitionName)}>
+                {competitionName}
                 </div>
                 <div className="league-logo">
                 <img src={props.competitionLogo} alt="league-emblem" className="league-emblem"/>

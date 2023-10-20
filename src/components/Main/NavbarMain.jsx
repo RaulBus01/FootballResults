@@ -41,19 +41,19 @@ export default function NavbarMain() {
                    <span className="favorite-text">Favorites</span>
 
                 </NavLink>
-                <NavLink  onClick={()=> navigate("/PremierLeague")}>
+                <NavLink  onClick={()=> navigate("/Premier League")}>
                     <LeagueHeader name="Premier League" logo=".\src\assets\LeagueLogo\logo-EPL.png" />
                 </NavLink>
-                <NavLink onClick={()=> navigate("/LaLiga")}>
+                <NavLink onClick={()=> navigate("/La Liga")}>
                     <LeagueHeader name="La Liga"logo=".\src\assets\LeagueLogo\logo-LaLiga.png" />
                 </NavLink>
-                <NavLink onClick={()=> navigate("/SerieA")}>
+                <NavLink onClick={()=> navigate("/Serie A")}>
                     <LeagueHeader name="Serie A"logo="src\assets\LeagueLogo\logo-SerieA.png" />
                 </NavLink>
                 <NavLink onClick={()=> navigate("/Bundesliga")}>
                     <LeagueHeader name="Bundesliga"logo="src\assets\LeagueLogo\logo-Bundesliga.png" />
                 </NavLink>
-                <NavLink onClick={()=> navigate("/Ligue1")}>
+                <NavLink onClick={()=> navigate("/Ligue 1")}>
                     <LeagueHeader name="Ligue 1"logo="src\assets\LeagueLogo\logo-Ligue1.png" />
                 </NavLink>
         
@@ -67,11 +67,11 @@ export default function NavbarMain() {
                     <NavLink onClick={()=> navigate("/Eredivisie")}>
                         <LeagueHeader name="Eredivisie" />
                     </NavLink>
-                    <NavLink onClick={()=> navigate("/PrimeiraLiga")}>
+                    <NavLink onClick={()=> navigate("/Primeira Liga")}>
                         <LeagueHeader name="Primeira Liga" />
                     </NavLink>
                     
-                    <NavLink onClick={()=> navigate("/BrasilSeriaA")}>
+                    <NavLink onClick={()=> navigate("/Campeonato Brasileiro Série A")}>
                         <LeagueHeader name="Brasil Seria A" />
                     </NavLink>
                     <NavLink onClick={()=> navigate("/Championship")}>

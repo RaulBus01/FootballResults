@@ -1,6 +1,6 @@
 
 import React from "react";
-
+import { useNavigate } from "react-router-dom";
 export default function LiveMatch(props)
 {
    
@@ -24,7 +24,7 @@ export default function LiveMatch(props)
           
             setPreview(!preview);
         }
-       
+       const navigate = useNavigate();
    
     return(
     <div className="container-LiveMatch">
@@ -37,15 +37,17 @@ export default function LiveMatch(props)
 
         <div className="team-container">
             <div className="home-team">
-                <img src={props.homeTeam.crest} alt="home-team" className="logo-Match"/>
-                <div className="team-name">
+               
+                <div className="team-name" onClick={()=>navigate("/" + props.competition.name +"/team")}>
+                    <img src={props.homeTeam.crest} alt="home-team" className="logo-Match"/>
                     {props.homeTeam.name}
                 </div>
             
             </div>
             <div className="away-team">
-                <img src={props.awayTeam.crest} alt="away-team" className="logo-Match"/>
-                <div className="team-name">
+                
+                <div className="team-name" onClick={()=>navigate("/" + props.competition.name +"/team")}>
+                    <img src={props.awayTeam.crest} alt="away-team" className="logo-Match"/>
                     {props.awayTeam.name}
                 </div>
             </div>

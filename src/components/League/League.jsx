@@ -14,18 +14,18 @@ export default function League()
     const {leagueName} = useParams();
 
     const competitions = [
-        { id: 2000, name: "WorldCup" },
-        { id: 2018, name: "Euro" },
-        { id: 2001, name: "ChampionsLeague" },
-        { id: 2021, name: "PremierLeague" },
+        { id: 2000, name: "World Cup" },
+        { id: 2018, name: "European Championship" },
+        { id: 2001, name: "Champions League" },
+        { id: 2021, name: "Premier League" },
         { id: 2002, name: "Bundesliga" },
-        { id: 2015, name: "Ligue1" },
-        { id: 2019, name: "SerieA" },
+        { id: 2015, name: "Ligue 1" },
+        { id: 2019, name: "Serie A" },
         { id: 2003, name: "Eredivisie" },
-        { id: 2014, name: "LaLiga" },
-        { id: 2017, name: "PrimeiraLiga" },
+        { id: 2014, name: "La Liga" },
+        { id: 2017, name: "Primeira Liga" },
         { id: 2016, name: "Championship" },
-        { id: 2013, name: "BrasilSeriaA" },
+        { id: 2013, name: "Campeonato Brasileiro Série A" },
       ];
       const league = competitions.find((league) => league.name === leagueName);
         

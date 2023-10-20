@@ -162,6 +162,7 @@ export default  function mainSection() {
                 {matchByCompetition && Object.keys(matchByCompetition).map((competitionId) => (
                     <LiveLeague
                     key={competitionId}
+                    competitionId={competitionId}
                     competitionName={matchByCompetition[competitionId][0].competition.name}
                     competitionLogo={matchByCompetition[competitionId][0].competition.emblem}
                     matches={matchByCompetition[competitionId]}

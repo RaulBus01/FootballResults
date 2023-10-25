@@ -257,14 +257,13 @@ table{
         height: 5rem;
      
 }
-      
+
     
 
 .position-row
 {
     
     display: flex;
-
   justify-content: center;
     align-items: center;
     text-align: center;
@@ -273,7 +272,7 @@ table{
 
 
 
-.logo-team
+.logo-team-row
 {
     width: 3rem;
     height: rem;

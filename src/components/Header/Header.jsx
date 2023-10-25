@@ -10,6 +10,10 @@ import DialogDelete from "../Dialog/DialogDelete.jsx";
 import DialogChangePassword from "../Dialog/DialogChangePass.jsx";
 import DialogAccount from "../Dialog/DialogAccount.jsx";
 import DialogUsername from "../Dialog/DialogUsername.jsx";
+
+import logoSite from '../../assets/Flash.png';
+import footballLogo from '../../assets/football.svg';
+
 export default function Header ()
 {
   
@@ -71,8 +75,8 @@ export default function Header ()
         <nav className="navbar navbar-expand-md bg-body-transparent " fixed="top"  style={styleNormal}>
             <div className="container-fluid">
             <div className="navbar-brand" onClick={()=>navigate("/")}>
-            <img className="football-png" src="src\assets\football.svg" alt="logo" />
-                <img className="logo-png" src="src\assets\Flash.png" alt="logo" />
+            <img className="football-png" src={footballLogo} alt="logo" />
+                <img className="logo-png" src={logoSite} alt="logo" />
             
             </div>
             

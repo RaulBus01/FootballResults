@@ -3,14 +3,13 @@ import React from "react";
 import "./League.css";
 import { useState } from "react";
 
-import Matchday from "./Matchday";
-
+import Matchday from "../Matchday/Matchday";
 import {useParams} from "react-router-dom";
 import { toast } from "react-toastify";
 export default function League()   
 {
     const [selectedButton, setSelectedButton] = useState("last-results");
-
+    
     const {leagueName} = useParams();
 
     const competitions = [
@@ -121,26 +120,22 @@ export default function League()
         .then(res => res.json())
         .then(data => {
       
-         
-          const finishedMatches = data.matches.filter(match => match.status === 'FINISHED');
-          const upcomingMatches = data.matches.filter(match => match.status === 'SCHEDULED' || match.status === 'TIMED');
-         
-    
-       
-          setCompetitonData(data);
-            
-         let groupedMatches = [];  
-         groupedMatches = groupByMatchday(finishedMatches)
-         groupedMatches.reverse();
+            if(data)
+            {
+                const finishedMatches = data.matches.filter(match => match.status === 'FINISHED');
+                const upcomingMatches = data.matches.filter(match => match.status === 'SCHEDULED' || match.status === 'TIMED');
 
-         
-     
-            setPlayedMatches(groupedMatches);
+                setCompetitonData(data);
+                    
+                let groupedMatches = [];  
+                groupedMatches = groupByMatchday(finishedMatches)
+                groupedMatches.reverse();
+                setPlayedMatches(groupedMatches);
+                
+                groupedMatches = groupByMatchdayUpcoming(upcomingMatches);
             
-            groupedMatches = groupByMatchdayUpcoming(upcomingMatches);
-          
-            setUpcomingMatches(groupedMatches);
-
+                setUpcomingMatches(groupedMatches);
+             }
         
         })
         .catch(error => {
@@ -288,6 +283,7 @@ export default function League()
                                 key={matchday}
                                 matchday={playedMatches[matchday][0].match.matchday}
                                 matches={playedMatches[matchday]}
+                                matchdayType="league"
                                 />
                             ))
                             }
@@ -308,6 +304,7 @@ export default function League()
                                 key={matchday}
                                 matchday={upcomingMatches[matchday][0].match.matchday}
                                 matches={upcomingMatches[matchday]}
+                                matchdayType="league"
                                 />
                             ))
                             }
@@ -326,15 +323,15 @@ export default function League()
                             <div className="league-body-content-standings">
                             <table className="table table-dark table-striped ">
                             <thead>
-                                <tr className="standings-header">
-                                    <th className="position-header">Pos</th>
-                                    <th className="team-header">Team</th>
-                                    <th className="matches-header">M</th>
-                                    <th className="wins-header">W</th>
-                                    <th className="draws-header">D</th>
-                                    <th className="loses-header">L</th>
-                                    <th className="goals-header">G</th>
-                                    <th className="points-header">Pts</th>
+                                <tr className="standings-header-row">
+                                    <th className="position-header-col">Pos</th>
+                                    <th className="team-header-col">Team</th>
+                                    <th className="matches-header-col">M</th>
+                                    <th className="wins-header-col">W</th>
+                                    <th className="draws-header-col">D</th>
+                                    <th className="loses-header-col">L</th>
+                                    <th className="goals-header-col">G</th>
+                                    <th className="points-header-col">Pts</th>
                                     {index === 0 && <th className="form-header">Form</th> }
                                 </tr>
                             </thead>
@@ -346,8 +343,8 @@ export default function League()
                                             {team.position}
                                         </td>
                                         <td className="team-row">
-                                            <img src={team.team.crest} alt="team-logo" className="logo-team"/>
-                                            <span className="team-name">{team.team.name}</span>
+                                            <img src={team.team.crest} alt="team-logo" className="logo-team-row"/>
+                                            <span className="team-name-row">{team.team.name}</span>
                                         </td>
                                         <td className="matches-row">
                                          <span>{team.playedGames}</span>   

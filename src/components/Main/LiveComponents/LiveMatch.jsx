@@ -104,7 +104,7 @@ export default function LiveMatch(props)
         <div className="team-container">
             <div className="home-team" >
                
-                <div className="team-name " onClick={()=>navigate("/" + props.competition.name +"/team")}>
+                <div className="team-name " onClick={()=>navigate("/" + props.competition.name +"/" + props.homeTeam.id)}>
                 <img src={props.homeTeam.crest} alt="home-team" className="logo-Match"/>
                     {props.homeTeam.name}
                 </div>
@@ -112,7 +112,7 @@ export default function LiveMatch(props)
             </div>
             <div className="away-team" >
                
-                <div className="team-name" onClick={()=>navigate("/" + props.competition.name +"/team")}>
+                <div className="team-name" onClick={()=>navigate("/" + props.competition.name +"/" + props.awayTeam.id)}>
                 <img src={props.awayTeam.crest} alt="away-team" className="logo-Match"/>
                     {props.awayTeam.name}
                 </div>

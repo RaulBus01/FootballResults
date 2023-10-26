@@ -2,12 +2,66 @@ import React from "react";
 import "./LiveMatch.css";
 import LivePreview from "./LivePreview.jsx";
 
-import { collection,setDoc, doc,deleteDoc } from "firebase/firestore";
-import {auth,db} from "../../../firebase-config";
+import { collection,setDoc, doc,deleteDoc,onSnapshot } from "firebase/firestore";
+import {auth,db} from "../../firebase-config";
 import { useNavigate } from "react-router-dom";
+import { set } from "date-fns";
 
 export default function LiveMatch(props)
 {
+    const user = auth.currentUser;
+    const navigate = useNavigate();
+    const [favoriteMatches,setFavoriteMatches] = React.useState([]);
+    const [isFavorite,setIsFavorite] = React.useState(props.isFavorite);
+    React.useEffect(() => {
+      function fetchFavoritesMatches() {
+
+          if (!user) {
+              return;
+            }
+        
+            const matchCollectionRef = collection(db, "users", user.uid, "football", "favorites", "matches");
+        
+            const unsubscribe = onSnapshot(matchCollectionRef, (snapshot) => {
+              const updatedMatches = snapshot.docs.map((doc) => doc.data());
+        
+              const updatedMatchesSorted = {};
+              updatedMatches.forEach((match) => {
+                const competitionId = match.competition.id;
+                if (!updatedMatchesSorted[competitionId]) {
+                  updatedMatchesSorted[competitionId] = [];
+                }
+                updatedMatchesSorted[competitionId].push({
+                  ...match,
+                  isFavorite: true,
+                });
+              });
+        
+              setFavoriteMatches(updatedMatchesSorted);
+            });
+        
+            return () => unsubscribe();
+          }
+          fetchFavoritesMatches();
+          
+          
+      }, [user]);
+      React.useEffect(() => {
+        function checkIfFavorite() {
+          if (!user) {
+            return;
+          }
+          favoriteMatches &&
+            Object.keys(favoriteMatches).forEach((competitionId) => {
+              favoriteMatches[competitionId].forEach((match) => {
+                if (match.id === props.id) {
+                  setIsFavorite(true);
+                }
+              });
+            });
+        }
+        checkIfFavorite();
+      }, [favoriteMatches]);
     function getLocalStartDate(startTime) {
         const matchStartTime = new Date(startTime);
 
@@ -31,8 +85,7 @@ export default function LiveMatch(props)
 
 
     
-    const user = auth.currentUser;
-    const navigate = useNavigate();
+    
     const addtoFavorites = () =>
     {
 
@@ -64,12 +117,13 @@ export default function LiveMatch(props)
     }
     function removeFromFavorites()
     {
-        if(props.isFavorite === true)
+        if(isFavorite === true)
         {
         const matchCollectionRef = collection(db, "users", user.uid,"football","favorites","matches");
         try{
             const docRef = doc(matchCollectionRef, props.id.toString());
             deleteDoc(docRef);
+            setIsFavorite(false);
         }catch(error)
         {
             console.log(error);
@@ -77,14 +131,14 @@ export default function LiveMatch(props)
         }
         }
     }
-   
+
    
     return(
     <div className="container-LiveMatch">
         
         {props.status!=="Play" && 
-           <div className="match-favorite">
-          {props.isFavorite === undefined || props.isFavorite === false ? (
+           user && <div className="match-favorite">
+          {isFavorite === undefined || isFavorite === false ? (
                 <button className="match-favorite-btn" type="button" onClick={addtoFavorites}>
                   <i className="fa-regular fa-star" />
                 </button>

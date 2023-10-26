@@ -16,6 +16,7 @@
 
     
 }
+
 .detail-league
 {
     display: flex;
@@ -45,11 +46,10 @@
  .logo-header
  {
     width: 6rem;
- 
-
     background-color: white;
-    border-radius: 20px;
-    margin-right: 20px;
+    padding: 10px;
+    border-radius: 15px;
+    margin-right: 15px;
  }
 .container-league-body
 {
@@ -124,7 +124,7 @@
     border-radius: 10px;
     background-color: #212529;
 }
-.total-btn,.home-btn,.away-btn
+.total-btn,.home-btn,.away-btn,.scorers-btn
 {
     display: flex;
     justify-content: center;
@@ -137,7 +137,7 @@
     border: none;
     border-radius: 10px;
 }
-.away-btn:hover,.home-btn:hover,.total-btn:hover
+.away-btn:hover,.home-btn:hover,.total-btn:hover,.scorers-btn:hover
 {
    
     border-radius: 10px;
@@ -263,19 +263,37 @@ table{
 .position-row
 {
     
-    display: flex;
-  justify-content: center;
-    align-items: center;
     text-align: center;
+    width: 5rem;
 
 }
+.team-row
+{
+ 
+    align-items: left;
+    justify-content: left;
+    
+}
+.player-row
+{
+   
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.matches-row,.goals-row,.assists-row,.draws-row,.wins-row,.losses-row,.goals-row,.points-row
+{
+    text-align: center;
+    width: 8rem;
+}
+
 
 
 
 .logo-team-row
 {
     width: 3rem;
-    height: rem;
+   
     background-color: white;
     border-radius: 10px;
     padding: 5px;
@@ -285,6 +303,8 @@ table{
     display: flex;
     height:5rem;
     align-items: center;
+    justify-content: center;
+    text-align: center;
   }
 
   
@@ -315,4 +335,5 @@ table{
 .form-L {
     background-color: #D83F31;
 }
+
 

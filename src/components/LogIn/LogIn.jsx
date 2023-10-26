@@ -28,7 +28,8 @@ export default function LogIn() {
       navigate("/");
     }
     catch(error) {
-      console.log(error);
+      
+      toast.error(error.message);
     }
   }
   const handleLoginWithGoogle = async (event) => {
@@ -160,8 +161,8 @@ export default function LogIn() {
                         <button className="submit-btn mt-4" type="submit" >
                           submit
                         </button>
-                        <p className="mb-0 mt-4 text-center">
-                          <a href="#0" className="link">
+                        <p className="mb-0 mt-4 text-center" onClick={()=>navigate("/forgot-password")}>
+                          <a className="link">
                             Forgot your password?
                           </a>
                         </p>

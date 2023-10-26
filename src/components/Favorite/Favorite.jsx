@@ -3,7 +3,8 @@ import "./Favorite.css"
 import { db } from "../../firebase-config";
 import { collection, getDocs,onSnapshot } from "@firebase/firestore";
 import { auth } from "../../firebase-config";
-import LiveLeague from "../Main/LiveComponents/LiveLeague";
+import LiveLeague from "../LiveComponents/LiveLeague";
+
 
 export default function Favorite()
 {
@@ -45,7 +46,7 @@ export default function Favorite()
                 <h1>Favorite</h1>
             </div>
             <div className="favorite-container-body">
-                { favoriteMatches && Object.keys(favoriteMatches).map((competitionId) => (
+                { user ? favoriteMatches && Object.keys(favoriteMatches).map((competitionId) => (
                     <LiveLeague 
                     key={competitionId}
                     id={competitionId}
@@ -57,8 +58,12 @@ export default function Favorite()
                     isFavorite={true}
                     
                      />
-                    ))}
+                    ))
+                  : <div className="favorite-container-body-login">
+                      You are not logged in to see your favorite matches. Please log in to see your favorite matches.
+                    </div>}
             </div>
+
         </div>
     )
 }

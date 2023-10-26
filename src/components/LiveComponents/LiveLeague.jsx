@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 export default function LiveLeague(props)
 {
     const [dropdown, setDropdown] = React.useState(true);
-
+    
     function toggleDropdown()
     {
         setDropdown(!dropdown);
@@ -56,6 +56,7 @@ export default function LiveLeague(props)
         </div>
         {dropdown && <div className="league-matches">
          { props.matches && props.matches.map((match) => (
+              
               <LiveMatch
               key={match.id}
               area={match.area}
@@ -73,7 +74,7 @@ export default function LiveLeague(props)
               group={match.group}
               date={match.utcDate===undefined ? match.startTime:match.utcDate}
               id={match.id}
-              isFavorite={props.isFavorite}
+              isFavorite={match.isFavorite}
             
               />
           ))

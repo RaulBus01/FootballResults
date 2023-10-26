@@ -7,6 +7,7 @@ import {
   deleteUser,
   GoogleAuthProvider,
   signInWithPopup,
+  sendPasswordResetEmail,
 } from 'firebase/auth';
 import { auth } from './firebase-config';
 
@@ -32,6 +33,9 @@ export const AuthProvider = ({ children }) => {
     const provider = new GoogleAuthProvider();
     return signInWithPopup(auth, provider);
   };
+  const forgotPassword = (email) => {
+    return sendPasswordResetEmail(auth, email);
+  }
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -54,6 +58,7 @@ export const AuthProvider = ({ children }) => {
     register,
     deleteAccount,
     loginWithGoogle,
+    forgotPassword,
   };
  
   return (

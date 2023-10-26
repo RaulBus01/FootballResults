@@ -33,10 +33,12 @@ export default function Header ()
     const { logout } = useAuth();
     const handleLogout = async (event) => {
       event.preventDefault();
+
       try {
         await logout();
         navigate("/login");
         toast.success("Logged out successfully!");
+        
         
       }
       catch(error) {
@@ -84,11 +86,13 @@ export default function Header ()
           
             <div className="buttons-container">
             <div className="dropdown">
-              <button className="btn btn-secondary dropdown-toggle" type="button" id="accountDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+              <button className="btn btn-secondary dropdown-toggle" type="button" id="accountDropdown" data-bs-toggle="dropdown" aria-expanded="false"
+                onClick={!user ? ()=>navigate("/login") : null}
+              >
                 {user ? <i className="fa-solid fa-user-check"></i> : <i className="fas fa-user" aria-hidden="true"></i> }
-                {user && <span className="account-btn-text">{user.displayName}</span>}
+                {user ? <span className="account-btn-text">{user.displayName}</span> : <span className="login-btn-text">Log In</span> }
               </button>
-              {user && 
+              {user ? 
               <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
                 <li className="dropdown-list-item"> 
                 <i className="fa-solid fa-file-invoice"></i> 
@@ -106,6 +110,8 @@ export default function Header ()
                   <button className="dropdown-item" type="submit" onClick={handleLogout}>Logout</button>
                 </li>
               </ul> 
+              :
+              null
                 
               }
             </div>

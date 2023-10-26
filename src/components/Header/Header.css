@@ -32,8 +32,12 @@
   transition: 0.3s;
   
 }
-
-
+.login-btn-text{
+  
+  text-align: center;
+  margin-left: 10px;
+  margin-right: 10px;
+}
 
 .logIn-btn,.account-btn
 {

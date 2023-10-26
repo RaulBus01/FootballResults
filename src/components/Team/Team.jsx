@@ -205,7 +205,7 @@ function Team()
             </>
         )
     }
-    console.log(playedMatches[selectedCompetition]);
+
     return (
         
         <div className="container-team">

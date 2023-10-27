@@ -68,11 +68,11 @@ export default function NavbarMain() {
         
                
                 <div className="dropdown show">
-                    <div className="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div className="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLinkBtn" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i className="fa-solid fa-list-ul"></i>
                     </div>
 
-                    <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <div className="dropdown-menu" aria-labelledby="dropdown" id="dropdown-menuLink">
                     <NavLink onClick={()=> navigate("/Eredivisie")}>
                         <LeagueHeader name="Eredivisie" logo={logoEredivisie} />
                     </NavLink>

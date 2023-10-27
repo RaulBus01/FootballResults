@@ -52,15 +52,24 @@
   margin-right: 10px;
  
 }
-.logIn-btn:hover,.account-btn:hover
+#dropdown-menu-account
 {
-    background-color: #183A1D;
-    transform: scale(0.9);
-    transition: 0.3s;
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #F0EBCE;
-    color:#F0EBCE;
-
+  background-color: #2d525f!important;
+  margin-right: 10px;
 }
+#accountDropdown
+{
+  background-color: #2d525f!important;
+  margin-right: 10px;
+}
+#accountDropdown:hover
+{
+  background-color: #053B50;
+  transform: scale(0.9);
+  transition: 0.3s;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #F0EBCE;
+}
+
 
 .logIn-btn-text
 {
@@ -80,25 +89,6 @@
 {
   width: 20px;
     margin-left: 10px;
-}
-
-.search-btn
-{
-  background-color: #395144;
-  border: none;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  padding: 10px;
-
-}
-.search-btn:hover
-{
-    background-color: #183A1D;
-    transform: scale(0.9);
-    transition: 0.3s;
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #F0EBCE;
-    color:#F0EBCE;
 }
 
 .me-2
@@ -142,7 +132,7 @@
 }
 .dropdown-list-item:hover
 {
-  background-color: #183A1D;
+  background-color: rgb(6, 85, 131);
   transform: scale(0.9);
   transition: 0.3s;
   box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #F0EBCE;

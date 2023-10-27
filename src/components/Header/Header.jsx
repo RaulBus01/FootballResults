@@ -93,7 +93,7 @@ export default function Header ()
                 {user ? <span className="account-btn-text">{user.displayName}</span> : <span className="login-btn-text">Log In</span> }
               </button>
               {user ? 
-              <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
+              <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown" id="dropdown-menu-account">
                 <li className="dropdown-list-item"> 
                 <i className="fa-solid fa-file-invoice"></i> 
                 <button className="dropdown-item" type="button" onClick={()=>toggleDialog("accountInfo")}>Account Information</button>

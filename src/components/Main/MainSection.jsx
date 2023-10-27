@@ -147,7 +147,7 @@ export default  function mainSection() {
       <div className="mainBody">
         <div className="liveTable">
             <div className="liveTableHeader">
-                <h3>Live Table</h3>
+                <h3 >Live Table</h3>
                 <div className="calendar">
                     <button className="previousDay" onClick={previousDay}>
                         <i className="fa fa-chevron-left fa-lg" aria-hidden="true"></i>
@@ -159,7 +159,7 @@ export default  function mainSection() {
                         <button className="nextDay" onClick={nextDay}>
                         <i className="fa fa-chevron-right fa-lg" aria-hidden="true"></i>
                         </button>
-                        <div className="dropdown-menu " aria-labelledby="dropdownButton">
+                        <div className="dropdown-menu " aria-labelledby="dropdownButton" id="dropdown-menuCalendar">
                             {dateArray.map((date) => (
                                 <button className="dropdown-item" type="button" key={date} onClick={selectDate}>
                                     {date}

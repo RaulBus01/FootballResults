@@ -1,0 +1,311 @@
+.container-team
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    background-color: #283739;
+}
+.container-team-header
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.team-header
+{
+    display: flex;
+    align-items: center;
+    width: 60%;
+    background-color: #5C8984;
+    margin-top:2rem;
+    border-radius: 15px;
+ 
+}
+.team-header-logo
+{
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       margin-left: 2rem;
+}
+.team-header-name
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    
+}
+.team-header-name-text
+{
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: white;
+    text-overflow: ellipsis;
+    overflow-wrap: break-word;
+}
+.team-header-flag
+{
+    margin-left: 0.5rem;
+    width: 3rem;
+    height: 2rem;
+}
+.team-header-region
+{
+    display: flex;
+    align-items: center; 
+    gap: 0.5rem;
+}
+.team-header-region-text
+{
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    
+    font-weight: bold;
+    color: white;
+}
+
+.team-logo
+{
+    width: 6rem;
+    background-color: white;
+    border-radius: 20px;
+    margin-right: 20px;
+}
+.detail-team
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 50%;
+}
+.team-header-info
+{
+    display: flex;
+    flex-direction: column;
+   
+}
+.team-header-info-text
+{
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    text-overflow: ellipsis;
+    overflow-wrap: break-word;
+}
+.team-header-stadium, .team-header-foundation, .team-header-website
+{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    color: white;
+  
+    gap: 0.5rem;
+}
+
+.team-header-stadium-img,#icon-info
+{
+   width: 4rem;
+}
+.team-header-link
+{
+    
+    color: white;
+    font-size: 1.2rem;
+  
+    text-overflow: ellipsis;
+   
+}
+.team-header-link:hover
+{
+    color: #ffeba7;
+    transition: 0.9s;
+}
+.container-team-body
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+.team-body
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    background-color: #212529;
+    border-radius: 15px;
+    width: 60%;
+}
+.team-body-header
+{
+    display: flex;
+    flex-direction: row;
+    
+    align-items: center;
+    width: 100%;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    background-color: #3755b0;
+    border-radius: 10px;
+
+}
+.team-body-button
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    border: none;
+    background-color: #283739;
+    color: white;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    
+}
+.team-body-button-selected
+{
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    border: none;
+    background-color: #5329b4;
+    color: white;
+    font-size: 1.2rem;
+    border-radius: 10px;
+}
+.team-body-button:hover
+{
+    background-color: #ffeba7;
+    color: black;
+    transition: 0.9s;
+}
+
+.team-body-content
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: #2125297a;
+    border-radius: 10px;
+
+    margin-bottom: 1rem;
+    
+}
+.team-body-content-matches
+{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    
+    background-color: #212529;
+    border-radius: 10px;
+    margin-top: 0.5rem;
+
+    color: white;
+}
+.team-body-content-matches-header,.team-body-content-competition-header
+{
+    display: flex;
+    flex-direction: row;
+    
+    align-items: center;
+    width: 100%;
+    background-color: #3755b0;
+    border-radius: 10px;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+.team-body-content-matches-header-button,.team-body-content-competition-button
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    border: none;
+    background-color: #283739;
+    color: white;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    border: none;
+}
+.team-body-content-matches-header-button:hover,.team-body-content-competition-button:hover
+{
+    background-color: #ffeba7;
+    color: black;
+    transition: 0.9s;
+}
+.team-body-content-matches-header-button-selected,.team-body-content-competition-button-selected
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    border: none;
+    background-color: #5329b4;
+    color: white;
+    font-size: 1.2rem;
+    border-radius: 10px;
+}
+.team-body-content-squad
+{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    
+    background-color: #212529;
+    border-radius: 10px;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    color: white;
+
+   
+    
+}
+.manager-team
+{
+    display: flex;
+    flex-direction: row;
+    
+}
+.players-team
+{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    
+   
+    
+   
+}
+
+

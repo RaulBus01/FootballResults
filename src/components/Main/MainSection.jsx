@@ -1,19 +1,23 @@
 import React, { useEffect } from "react";  
 import ReactDOM from "react-dom";
 import "./Main.css"
-import LiveMatch from "./LiveComponents/LiveMatch";
-import LiveLeague from "./LiveComponents/LiveLeague";
+import LiveMatch from "../LiveComponents/LiveMatch";    
+import LiveLeague from "../LiveComponents/LiveLeague";
 import { startOfDay, subDays,addDays, set } from "date-fns";
-import { ar } from "date-fns/locale";
+import { auth } from "../../firebase-config";
+import { db } from "../../firebase-config";
+import {collection, onSnapshot} from "@firebase/firestore";
 
 
 export default  function mainSection() {
     
     const [date, setDate] = React.useState();
     const [dateArray, setDateArray] = React.useState([""]);
+    const user = auth.currentUser;
     
     const [matches, setMatches] = React.useState([]);
     const [matchByCompetition, setMatchByCompetition] = React.useState([]);
+
     const competitions=[
         {id:2000,weight:0}, //World Cup
         {id:2018,weight:0}, //Euro
@@ -37,14 +41,11 @@ export default  function mainSection() {
         const days = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate();
         return `${years}-${months}-${days}`;
     }
-    
-   
-   
     React.useEffect(() => {
         
             if(!date) return;
 
-       
+        
           try {
             const apiKey = '8c3dd87f26484a128ebf95024ee0ff3f';
             const url = '/v4/matches/';
@@ -73,7 +74,7 @@ export default  function mainSection() {
             
         };
     },[date]);
-    
+   
     function getDates() {
         const currentDate = startOfDay(new Date());
         const dates = [];
@@ -110,31 +111,43 @@ export default  function mainSection() {
        
        
     }
+    
     function getMatchesByCompetition()
     {
+        if(!matches) return;
         const matchesFiltered = {};
-   
        matches && matches.forEach((match) => {
           const competitionId = match.competition.id;
           if (!matchesFiltered[competitionId]) {
             matchesFiltered[competitionId] = [];
           }
-          matchesFiltered[competitionId].push(match);
+         
+          matchesFiltered[competitionId].push({
+            ...match,
+            isFavorite: false,
+            
+          
+
+          })
         });
+    
         setMatchByCompetition(matchesFiltered);
+        
     }
     React.useEffect(() => {
         getMatchesByCompetition();
         
-     
     },[matches]);
+    
 
+   
+    
 
     return(
       <div className="mainBody">
         <div className="liveTable">
             <div className="liveTableHeader">
-                <h3>Live Table</h3>
+                <h3 >Live Table</h3>
                 <div className="calendar">
                     <button className="previousDay" onClick={previousDay}>
                         <i className="fa fa-chevron-left fa-lg" aria-hidden="true"></i>
@@ -146,7 +159,7 @@ export default  function mainSection() {
                         <button className="nextDay" onClick={nextDay}>
                         <i className="fa fa-chevron-right fa-lg" aria-hidden="true"></i>
                         </button>
-                        <div className="dropdown-menu " aria-labelledby="dropdownButton">
+                        <div className="dropdown-menu " aria-labelledby="dropdownButton" id="dropdown-menuCalendar">
                             {dateArray.map((date) => (
                                 <button className="dropdown-item" type="button" key={date} onClick={selectDate}>
                                     {date}
@@ -159,7 +172,8 @@ export default  function mainSection() {
                 
             </div>
             <div className="liveTableBody">
-                {matchByCompetition && Object.keys(matchByCompetition).map((competitionId) => (
+                {  matchByCompetition && Object.keys(matchByCompetition).map((competitionId) => (
+                    
                     <LiveLeague
                     key={competitionId}
                     competitionId={competitionId}
@@ -168,9 +182,14 @@ export default  function mainSection() {
                     matches={matchByCompetition[competitionId]}
                     countryFlag={matchByCompetition[competitionId][0].area.flag}
                     id={matchByCompetition[competitionId][0].competition.id}
+                 
                     
                     />
-                ))}
+                ))
+                 
+            
+
+                }
                
             
                 

@@ -40,6 +40,11 @@
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
-
+.matchday-header-title-competition:hover
+{
+    cursor: pointer;
+    
+    color: black;
+}
 
 

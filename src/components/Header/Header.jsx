@@ -10,6 +10,10 @@ import DialogDelete from "../Dialog/DialogDelete.jsx";
 import DialogChangePassword from "../Dialog/DialogChangePass.jsx";
 import DialogAccount from "../Dialog/DialogAccount.jsx";
 import DialogUsername from "../Dialog/DialogUsername.jsx";
+
+import logoSite from '../../assets/Flash.png';
+import footballLogo from '../../assets/football.svg';
+
 export default function Header ()
 {
   
@@ -29,10 +33,12 @@ export default function Header ()
     const { logout } = useAuth();
     const handleLogout = async (event) => {
       event.preventDefault();
+
       try {
         await logout();
         navigate("/login");
         toast.success("Logged out successfully!");
+        
         
       }
       catch(error) {
@@ -71,8 +77,8 @@ export default function Header ()
         <nav className="navbar navbar-expand-md bg-body-transparent " fixed="top"  style={styleNormal}>
             <div className="container-fluid">
             <div className="navbar-brand" onClick={()=>navigate("/")}>
-            <img className="football-png" src="src\assets\football.svg" alt="logo" />
-                <img className="logo-png" src="src\assets\Flash.png" alt="logo" />
+            <img className="football-png" src={footballLogo} alt="logo" />
+                <img className="logo-png" src={logoSite} alt="logo" />
             
             </div>
             
@@ -80,12 +86,14 @@ export default function Header ()
           
             <div className="buttons-container">
             <div className="dropdown">
-              <button className="btn btn-secondary dropdown-toggle" type="button" id="accountDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+              <button className="btn btn-secondary dropdown-toggle" type="button" id="accountDropdown" data-bs-toggle="dropdown" aria-expanded="false"
+                onClick={!user ? ()=>navigate("/login") : null}
+              >
                 {user ? <i className="fa-solid fa-user-check"></i> : <i className="fas fa-user" aria-hidden="true"></i> }
-                {user && <span className="account-btn-text">{user.displayName}</span>}
+                {user ? <span className="account-btn-text">{user.displayName}</span> : <span className="login-btn-text">Log In</span> }
               </button>
-              {user && 
-              <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
+              {user ? 
+              <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown" id="dropdown-menu-account">
                 <li className="dropdown-list-item"> 
                 <i className="fa-solid fa-file-invoice"></i> 
                 <button className="dropdown-item" type="button" onClick={()=>toggleDialog("accountInfo")}>Account Information</button>
@@ -102,6 +110,8 @@ export default function Header ()
                   <button className="dropdown-item" type="submit" onClick={handleLogout}>Logout</button>
                 </li>
               </ul> 
+              :
+              null
                 
               }
             </div>

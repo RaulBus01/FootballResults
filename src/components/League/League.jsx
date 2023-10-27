@@ -3,14 +3,24 @@ import React from "react";
 import "./League.css";
 import { useState } from "react";
 
-import Matchday from "./Matchday";
-
+import Matchday from "../Matchday/Matchday";
 import {useParams} from "react-router-dom";
 import { toast } from "react-toastify";
+import logoEPL from "../../assets/LeagueLogo/logo-EPL.png"
+import logoLaLiga from "../../assets/LeagueLogo/logo-LaLiga.png"
+import logoSerieA from "../../assets/LeagueLogo/logo-SerieA.png"
+import logoBundesliga from "../../assets/LeagueLogo/logo-Bundesliga.png"
+import logoLigue1 from "../../assets/LeagueLogo/logo-Ligue1.png"
+import logoEredivisie from "../../assets/LeagueLogo/logo-Eredvisie.png"
+import logoPrimeraLiga from "../../assets/LeagueLogo/logo-PrimeraLiga.png"
+import logoBrasilSerieA from "../../assets/LeagueLogo/logo-BrasilSerieA.png"
+import logoChampionship from "../../assets/LeagueLogo/logo-Championship.png"
+
 export default function League()   
 {
     const [selectedButton, setSelectedButton] = useState("last-results");
-
+    const [leagueLogo,setLeagueLogo] = useState("");
+    
     const {leagueName} = useParams();
 
     const competitions = [
@@ -37,7 +47,7 @@ export default function League()
     const [competitionData,setCompetitonData] = useState([]);
     const [playedMatches,setPlayedMatches] = useState([]);
     const [upcomingMatches,setUpcomingMatches] = useState([]);
-
+    const [scorers,setScorers] = useState([]);
     const [standingsData,setStandingsData] = useState([]);
     const [index,setIndex] = useState(0);
     const standingsButton = (buttonName) =>
@@ -98,15 +108,52 @@ export default function League()
          })
         return groupedMatches;
         }
-   
+        async function getScorers()
+        {
+          try {
+        
+            const apiKey = '8c3dd87f26484a128ebf95024ee0ff3f';
+            const url = `v4/competitions/${league.id}/scorers?season=${season.slice(0,4)}`
+         
+            //const querryDate = formatDate(date);
+          
+            const query = url;
+            const options = {
+              method: 'GET',
+              headers: { 'X-Auth-Token': apiKey },
+              
+             
+            };
+            fetch(query, options)
+            .then(res => res.json())
+            .then(data => {
+          
+                if(data)
+                {
+                    
+                    setScorers(data);
+                }
+                
+    
+                    
+            })
+            .catch(error => {
+              console.log(error);
+            });
+        }catch(error)
+            {
+                console.log(error);
+                
+            };
+        }
 
  
      async function getData()
     {
       try {
-    
+        
         const apiKey = '8c3dd87f26484a128ebf95024ee0ff3f';
-        const url = `v4/competitions/${league.id}/matches?season=2023`
+        const url = `v4/competitions/${league.id}/matches?season=${season.slice(0,4)}`
      
         //const querryDate = formatDate(date);
       
@@ -121,26 +168,23 @@ export default function League()
         .then(res => res.json())
         .then(data => {
       
-         
-          const finishedMatches = data.matches.filter(match => match.status === 'FINISHED');
-          const upcomingMatches = data.matches.filter(match => match.status === 'SCHEDULED' || match.status === 'TIMED');
-         
-    
-       
-          setCompetitonData(data);
-            
-         let groupedMatches = [];  
-         groupedMatches = groupByMatchday(finishedMatches)
-         groupedMatches.reverse();
+            if(data)
+            {
+                const finishedMatches = data.matches.filter(match => match.status === 'FINISHED');
+                const upcomingMatches = data.matches.filter(match => match.status === 'SCHEDULED' || match.status === 'TIMED');
 
-         
-     
-            setPlayedMatches(groupedMatches);
+                setCompetitonData(data);
+                selectLogo(data.competition.name);
+                    
+                let groupedMatches = [];  
+                groupedMatches = groupByMatchday(finishedMatches)
+                groupedMatches.reverse();
+                setPlayedMatches(groupedMatches);
+                
+                groupedMatches = groupByMatchdayUpcoming(upcomingMatches);
             
-            groupedMatches = groupByMatchdayUpcoming(upcomingMatches);
-          
-            setUpcomingMatches(groupedMatches);
-
+                setUpcomingMatches(groupedMatches);
+             }
         
         })
         .catch(error => {
@@ -151,6 +195,45 @@ export default function League()
             console.log(error);
             
         };
+    }
+    function selectLogo(leagueName)
+    {
+        if(leagueName === "Premier League")
+        {
+            setLeagueLogo(logoEPL);
+        }
+        if(leagueName === "Primera Division")
+        {
+            setLeagueLogo(logoLaLiga);
+        }
+        if(leagueName === "Serie A")
+        {
+            setLeagueLogo(logoSerieA);
+        }
+        if(leagueName === "Bundesliga")
+        {
+            setLeagueLogo(logoBundesliga);
+        }
+        if(leagueName === "Ligue 1")
+        {
+            setLeagueLogo(logoLigue1);
+        }
+        if(leagueName === "Eredivisie")
+        {
+            setLeagueLogo(logoEredivisie);
+        }
+        if(leagueName === "Primeira Liga")
+        {
+            setLeagueLogo(logoPrimeraLiga);
+        }
+        if(leagueName === "Campeonato Brasileiro Série A")
+        {
+            setLeagueLogo(logoBrasilSerieA);
+        }
+        if(leagueName === "Championship")
+        {
+            setLeagueLogo(logoChampionship);
+        }
     }
    
 
@@ -172,8 +255,9 @@ export default function League()
             const response = await fetch(query, options);
     
             if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
                 toast.error("Error");
+                throw new Error(`HTTP error! Status: ${response.status}`);
+                
             }
     
             const data = await response.json();
@@ -200,14 +284,16 @@ export default function League()
             
             const fetchData = async () => {
              await getData();
+            
              await getStandingsData();
+             await getScorers();
             };
             fetchData();
         }, [leagueName,season]);
       
         
     
-    
+
     
     
     
@@ -222,7 +308,7 @@ export default function League()
             <div className="container-league-header">
                 <div className="league-header">
                     <div className="league-header-logo">
-                        {/* <img src={competitionData.competition.emblem} alt="logo" className="logo-header"/> */}
+                        <img src={leagueLogo} alt="league-logo" className="logo-header"/>
                     </div>
                     <div className="detail-league">
                     
@@ -288,6 +374,7 @@ export default function League()
                                 key={matchday}
                                 matchday={playedMatches[matchday][0].match.matchday}
                                 matches={playedMatches[matchday]}
+                                matchdayType="league"
                                 />
                             ))
                             }
@@ -308,6 +395,7 @@ export default function League()
                                 key={matchday}
                                 matchday={upcomingMatches[matchday][0].match.matchday}
                                 matches={upcomingMatches[matchday]}
+                                matchdayType="league"
                                 />
                             ))
                             }
@@ -316,70 +404,111 @@ export default function League()
                         
                         
                       
-                        { selectedButton === 'standings' && 
-                        <div className="league-body-content">
+                        { 
+                            selectedButton === 'standings' && 
+                            <div className="league-body-content">
                              <div className="league-body-content-standings-header">
                                 <button className={`total-btn ${selectedStandingsButton === "total" ? 'selected' : ""}`} onClick={()=>standingsButton("total")}>Total</button>
                                 <button className={`home-btn ${selectedStandingsButton === "home" ? 'selected' : ""}`} onClick={()=>standingsButton("home")}>Home</button>
                                 <button className={`away-btn ${selectedStandingsButton === "away" ? 'selected' : ""}`} onClick={()=>standingsButton("away")}>Away</button>
+                                <button className={`scorers-btn ${selectedStandingsButton === "scorers" ? 'selected' : ""}`} onClick={()=>standingsButton("scorers")}>Scorers</button>
                             </div>
+                            
                             <div className="league-body-content-standings">
-                            <table className="table table-dark table-striped ">
-                            <thead>
-                                <tr className="standings-header">
-                                    <th className="position-header">Pos</th>
-                                    <th className="team-header">Team</th>
-                                    <th className="matches-header">M</th>
-                                    <th className="wins-header">W</th>
-                                    <th className="draws-header">D</th>
-                                    <th className="loses-header">L</th>
-                                    <th className="goals-header">G</th>
-                                    <th className="points-header">Pts</th>
-                                    {index === 0 && <th className="form-header">Form</th> }
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {standingsData.standings[index].table.map((team) => (
-                                 
-                                    <tr key={team.team.id} className="standings-row">
-                                        <td className="position-row">
-                                            {team.position}
-                                        </td>
-                                        <td className="team-row">
-                                            <img src={team.team.crest} alt="team-logo" className="logo-team"/>
-                                            <span className="team-name">{team.team.name}</span>
-                                        </td>
-                                        <td className="matches-row">
-                                         <span>{team.playedGames}</span>   
-                                        </td>
-                                        <td className="wins-row">
-                                            <span>{team.won} </span>
-                                        </td>
-                                        <td className="draws-row">{team.draw}</td>
-                                        <td className="loses-row">{team.lost}</td>
-                                        <td className="goals-row">
-                                            {team.goalsFor} : {team.goalsAgainst}
-                                        </td>
-                                        <td className="points-row">{team.points}</td>
-                                        {index === 0 && 
-                                            <td className="form-row" > 
-                                            {team.form.split(',').map((result,index) => (
+                            {selectedStandingsButton !== "scorers" ? 
+                                <table className="table table-dark table-striped ">
+                                        <thead>
+                                            <tr className="standings-header-row">
+                                                <th className="position-header-col">Pos</th>
+                                                <th className="team-header-col">Team</th>
+                                                <th className="matches-header-col">M</th>
+                                                <th className="wins-header-col">W</th>
+                                                <th className="draws-header-col">D</th>
+                                                <th className="loses-header-col">L</th>
+                                                <th className="goals-header-col">G</th>
+                                                <th className="points-header-col">Pts</th>
+                                                {index === 0 && <th className="form-header">Form</th> }
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {standingsData.standings[index].table.map((team) => (
+                                            
+                                                <tr key={team.team.id} className="standings-row">
+                                                    <td className="position-row">
+                                                        {team.position}
+                                                    </td>
+                                                    <td className="team-row">
+                                                        <img src={team.team.crest} alt="team-logo" className="logo-team-row"/>
+                                                        <span className="team-name-row">{team.team.name}</span>
+                                                    </td>
+                                                    <td className="matches-row">
+                                                        <span>{team.playedGames}</span>   
+                                                    </td>
+                                                    <td className="wins-row">
+                                                        <span>{team.won} </span>
+                                                    </td>
+                                                    <td className="draws-row">{team.draw}</td>
+                                                    <td className="losses-row">{team.lost}</td>
+                                                    <td className="goals-row">
+                                                        {team.goalsFor} : {team.goalsAgainst}
+                                                    </td>
+                                                    <td className="points-row">{team.points}</td>
+                                                    {index === 0 && 
+                                                        <td className="form-row" > 
+                                                        {team.form.split(',').map((result,index) => (
+                                                            <span key={index}className={`form-${result}`}>{result}</span>
+                                                        ))}
 
-                                               
-                                                 <span key={index}className={`form-${result}`}>{result}</span>
-                                              
-                                            ))}
+                                                        </td>
+                                                    }
+                                                </tr>
+                                                        ))} 
+                                    
                                         
-                                        
-                                            </td>
+                                        </tbody>
+                                </table>
+                                : 
+                                <table className="table table-dark table-striped ">
+                                    <thead>
+                                            <tr className="standings-header-row">
+                                                <th className="position-header-col">Pos</th>
+                                                <th className="team-header-col">Player</th>
+                                                <th className="team-header-col">Team</th>
+                                                <th className="matches-header-col">Matches</th>
+                                                <th className="wins-header-col">Goals</th>
+                                                <th className="draws-header-col">Assissts</th>
+
+                                            </tr>
+                                    </thead>
+                                    <tbody>
+                                        {
+                                            scorers && scorers.scorers.map((scorer,index) => (
+                                                
+                                                <tr key={scorer.player.id} className="standings-row">
+                                                    <td className="position-row">
+                                                        {index+1}
+                                                    </td>
+                                                    <td className="player-row">
+                                                        <span className="team-name-row">{scorer.player.name}</span>
+                                                    </td>
+                                                    <td className="team-row">
+                                                        <img src={scorer.team.crest} alt="team-logo" className="logo-team-row"/>
+                                                        <span className="team-name-row">{scorer.team.name}</span>
+                                                    </td>
+                                                    <td className="matches-row">
+                                                    <span>{scorer.playedMatches}</span>   
+                                                    </td>
+                                                    <td className="goals-row">
+                                                        <span>{scorer.goals} </span>
+                                                    </td>
+                                                    <td className="assists-row">{scorer.assists !== null ? scorer.assists : 0}</td>
+                                                </tr>
+                                            ))
                                         }
-
-
-                                    </tr>
-                                ))}
-                            </tbody>
-                            </table>
-                            </div>
+                                    </tbody>
+                                </table>
+                            }
+                            </div> 
                         </div>
 
                         }

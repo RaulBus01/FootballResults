@@ -15,7 +15,7 @@
     border-radius: 10px;
     padding: 15px;
     margin: 20px;
-    background-color: tomato;
+    background-color: #176B87;
 }
 .favorite-container-body
 {
@@ -26,7 +26,7 @@
     border-radius: 10px;
     padding: 15px;
     margin: 20px;
-    background-color: tomato;
+    background-color: #176B87;
     flex-direction: column;
     align-items: center;
 }

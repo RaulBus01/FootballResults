@@ -2,6 +2,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
+import LivePreview from "../LiveComponents/LivePreview.jsx";
 export default function Fixture(props)
 {
    

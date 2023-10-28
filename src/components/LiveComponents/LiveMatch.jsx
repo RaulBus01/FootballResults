@@ -9,6 +9,7 @@ import { set } from "date-fns";
 
 export default function LiveMatch(props)
 {
+  
     const user = auth.currentUser;
     const navigate = useNavigate();
     const [favoriteMatches,setFavoriteMatches] = React.useState([]);
@@ -79,7 +80,7 @@ export default function LiveMatch(props)
         const [preview, setPreview] = React.useState(false);
         function openPreview()
         {
-            console.log("openPreview");
+           
             setPreview(!preview);
         }
 
@@ -207,7 +208,7 @@ export default function LiveMatch(props)
       <div className="live-preview">
           {preview && <LivePreview 
 
-            matchId={props.matchId}
+            matchId={props.id}
             competition={props.competition}
             stage={props.stage}
             matchday={props.matchday}

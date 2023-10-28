@@ -15,11 +15,14 @@ import logoEredivisie from "../../assets/LeagueLogo/logo-Eredvisie.png"
 import logoPrimeraLiga from "../../assets/LeagueLogo/logo-PrimeraLiga.png"
 import logoBrasilSerieA from "../../assets/LeagueLogo/logo-BrasilSerieA.png"
 import logoChampionship from "../../assets/LeagueLogo/logo-Championship.png"
+import {auth,db}    from "../../firebase-config";
+import { collection,onSnapshot,doc,setDoc } from "firebase/firestore";
 
 export default function League()   
 {
     const [selectedButton, setSelectedButton] = useState("last-results");
     const [leagueLogo,setLeagueLogo] = useState("");
+    const [teams,setTeams] = useState([]);
     
     const {leagueName} = useParams();
 
@@ -89,6 +92,9 @@ export default function League()
         
         return groupedMatches;
     }
+   
+   
+
     function groupByMatchdayUpcoming(matches) {
         const groupedMatches = [];
         matches.forEach((match ) =>
@@ -172,7 +178,7 @@ export default function League()
             {
                 const finishedMatches = data.matches.filter(match => match.status === 'FINISHED');
                 const upcomingMatches = data.matches.filter(match => match.status === 'SCHEDULED' || match.status === 'TIMED');
-
+               
                 setCompetitonData(data);
                 selectLogo(data.competition.name);
                     
@@ -281,17 +287,78 @@ export default function League()
 
     
         React.useEffect(() => {
-            
+            if(selectedButton === "standings")
+            {
+                getStandingsData();
+                getScorers();
+            }
             const fetchData = async () => {
              await getData();
             
-             await getStandingsData();
-             await getScorers();
+            
             };
             fetchData();
+            
         }, [leagueName,season]);
       
-        
+        // React.useEffect(() => {
+        //     function getTeams() {
+        //         try {
+                
+        //             const apiKey = '8c3dd87f26484a128ebf95024ee0ff3f';
+        //             const url = `v4/competitions/${league.id}/teams?season=${season.slice(0,4)}`
+                 
+        //             //const querryDate = formatDate(date);
+                  
+        //             const query = url;
+        //             const options = {
+        //               method: 'GET',
+        //               headers: { 'X-Auth-Token': apiKey },
+                      
+                     
+        //             };
+        //             fetch(query, options)
+        //             .then(res => res.json())
+        //             .then(data => {
+                  
+        //                 if(data)
+        //                 {
+                            
+        //                     setTeams(data.teams);
+                            
+        //                     const leagueRef = collection(db, "teams");
+        //                     try{
+                                
+        //                         data.teams.map((team) => {
+        //                             const docRef = doc(leagueRef, team.name.toUpperCase());
+        //                             setDoc(docRef, {...team,key : team.id,});
+        //                         }
+        //                         )
+        //                     }
+        //                     catch(error)
+        //                     {
+        //                         console.log(error);
+        //                      }
+        //                 }
+                        
+            
+                            
+        //             })
+                        
+
+        //             .catch(error => {
+        //               console.log(error);
+        //             });
+        //         }catch(error)
+        //             {
+        //                 console.log(error);
+                        
+        //             };
+        //         }
+        //         getTeams();
+               
+                
+        //     }, [leagueName,season]);
     
 
     

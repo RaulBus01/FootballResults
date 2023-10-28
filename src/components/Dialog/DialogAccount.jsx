@@ -1,9 +1,29 @@
 import React from "react";
 import "./Dialog.css";
-
+import {auth,db} from "../../firebase-config";
+import { collection,setDoc, doc,deleteDoc,onSnapshot } from "firebase/firestore";
 
 export default function DialogAccount(props)
 {
+    const user = props.user;
+    const [favoriteTeam,setFavoriteTeam] = React.useState(props.favoriteTeam);
+    function getFavoriteTeam()
+    {
+        if(user)
+        {
+            const favoriteTeamRef = collection(db,"users",user.uid,"football","favorites","team");
+            const unsubscribe = onSnapshot(favoriteTeamRef,(snapshot)=>{
+                const favoriteTeam = snapshot.docs.map((doc)=>doc.data());
+                setFavoriteTeam(favoriteTeam[0]);
+            });
+            return ()=>unsubscribe();
+        }
+    }
+    React.useEffect(() => {
+        getFavoriteTeam();
+    }, [user]);
+      
+
     
     return (
         <div className="dialog-container">
@@ -21,10 +41,19 @@ export default function DialogAccount(props)
                         </button>
                     </div>
                     <div className="account-info-favorite-team">
-                        <p className="dialog-text">Favorite team:{" " +props.favoriteTeam}</p>
+                        <div className="account-info-favorite-team-label">
+                        <p className="dialog-text-favorite">Favorite team:</p>
+                        {favoriteTeam && <span className="dialog-text-favorite-team-name">{" " + favoriteTeam.name }</span> }
+                        
+                        {/* <img src={props.favoriteTeam.crest} alt="team-logo" className="logo-Match"/> */}
+                        </div>
+                        
                         <button className="dialog-button-edit" onClick={()=>props.toggleDialog("changeFavoriteTeam")}>
                             <i className="fas fa-edit"></i>
                         </button>
+                      
+       
+      
                     </div>
                    
                 </div>

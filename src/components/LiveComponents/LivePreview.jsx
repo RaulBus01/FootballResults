@@ -1,5 +1,6 @@
 import React from "react";
 import "./LivePreview.css";
+import { useNavigate } from "react-router-dom";
 export default function LivePreview(props)
 {
     function formatDate(dateString)
@@ -10,40 +11,8 @@ export default function LivePreview(props)
         const days = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate();
         return `${years}-${months}-${days}`;
     }
-    const [matchData, setMatchData] = React.useState([]);
-    function getMatchDetails(matchId)
-    {
-        
-            try {
-                const apiKey = '8c3dd87f26484a128ebf95024ee0ff3f';
-                const url = '/v4/matches/';
-             
-                // const querryDate = formatDate(date);
-              
-                const query = url+`${matchId}`;
-                const options = {
-                  method: 'GET',
-                  headers: { 'X-Auth-Token': apiKey },
-                  
-                 
-                };
-               fetch(query, options)
-               .then(res => res.json())
-               .then(data => setMatchData(data))
-               
-        
-            }catch(error)
-            {
-                console.log(error);
-                
-            };
-       
-        
-    }
-    React.useState(() => {
-        getMatchDetails(props.matchId);
-    },[matchData]);
-
+    
+    const navigate = useNavigate();
    
     
    
@@ -68,7 +37,7 @@ export default function LivePreview(props)
                     <div className="homeTeam-logo">
                         <img src={props.homeTeam.crest} alt="homeTeam-logo" className="homeTeam-logo-img" width="50px"/>
                     </div>
-                    <div className="homeTeam-name">
+                    <div className="homeTeam-name" onClick={()=>navigate(`/${props.competition.name}/${props.homeTeam.id}`)}>
                         {props.homeTeam.name}
                     </div>
                   </div>
@@ -76,7 +45,7 @@ export default function LivePreview(props)
                     <div className="awayTeam-logo">
                         <img src={props.awayTeam.crest} alt="awayTeam-logo" className="awayTeam-logo-img" width="50px"/>
                         </div>
-                    <div className="awayTeam-name">
+                    <div className="awayTeam-name" onClick={()=>navigate(`/${props.competition.name}/${props.awayTeam.id}`)}>
                         {props.awayTeam.name}
                     </div>
                 </div>
@@ -100,20 +69,13 @@ export default function LivePreview(props)
                         {props.status !=="TIMED" ? props.fullTimeAwayTeamScore : "-"}
                     </div>
                 </div>
-                {/* <div className="Stadium">
-                    <div className="Stadium-name">
-                        Stadium : Santiago Bernabeu
+                <div className="preview-footer">
+                    <div className="preview-footer-status">
+                        {props.status}
                     </div>
-                </div> */}
-            </div>
-            <div className="preview-footer">
-                <button className="more-details-preview-btn" type="submit" onClick={()=>getMatchDetails(props.matchId)}>
                     
-                    More Details 
-                    <i className="fa fa-chevron-down fa-lg" aria-hidden="true" id="more-details-icon"></i>
-                </button>
-                
-            </div>
+                </div>
+                </div>
             
             </div>
 

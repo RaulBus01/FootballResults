@@ -10,9 +10,11 @@ import DialogDelete from "../Dialog/DialogDelete.jsx";
 import DialogChangePassword from "../Dialog/DialogChangePass.jsx";
 import DialogAccount from "../Dialog/DialogAccount.jsx";
 import DialogUsername from "../Dialog/DialogUsername.jsx";
+import DialogChangeFavoriteTeam from "../Dialog/DialogChangeFavoriteTeam.jsx";
 
 import logoSite from '../../assets/Flash.png';
 import footballLogo from '../../assets/football.svg';
+import { set } from "date-fns";
 
 export default function Header ()
 {
@@ -46,11 +48,12 @@ export default function Header ()
       }
     };
    
-  
+   
     const [showAccountInfoDialog, setShowAccountInfoDialog] = React.useState(false);
     const [showChangePasswordDialog, setShowChangePasswordDialog] = React.useState(false);
     const [showDeleteAccountDialog, setShowDeleteAccountDialog] = React.useState(false);
     const [showChangeUsernameDialog, setShowChangeUsernameDialog] = React.useState(false);
+    const [showChangeFavoriteTeamDialog, setShowChangeFavoriteTeamDialog] = React.useState(false);
   
     const toggleDialog = (dialogType) => {
       switch (dialogType) {
@@ -66,11 +69,14 @@ export default function Header ()
        case 'changeUsername':
           setShowChangeUsernameDialog(!showChangeUsernameDialog);
           break;
+        case 'changeFavoriteTeam':
+          setShowChangeFavoriteTeamDialog(!showChangeFavoriteTeamDialog);
+          break;
         default:
           break;
       }
     }
- 
+  
       return (
       
         
@@ -121,13 +127,19 @@ export default function Header ()
               {showDeleteAccountDialog && <DialogDelete toggleDialog={toggleDialog} />}
               {showChangePasswordDialog && <DialogChangePassword toggleDialog={toggleDialog} />}
               {showAccountInfoDialog && <DialogAccount 
+                user={user}
                 email={user.email}
                 username={user.displayName}
                 toggleDialog={toggleDialog}  />}
               {showChangeUsernameDialog && <DialogUsername toggleDialog={toggleDialog}
               username={user.displayName}
               user={user}
-              />}
+             />
+             }
+             {
+                showChangeFavoriteTeamDialog && <DialogChangeFavoriteTeam toggleDialog={toggleDialog}
+                   />
+             }
               
                          
             </nav>

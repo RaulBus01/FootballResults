@@ -1,5 +1,8 @@
 # FlashGoal
-[Screenshot](https://github.com/RaulBus01/FootballResults/blob/main/src/assets/Flash-Small.png)
+<p align="center">
+  <img src ="https://github.com/RaulBus01/FootballResults/blob/main/src/assets/Flash-Small.png"/>
+</p>
+  
 This project is a website with football matches, results and standings.
 
 Before logging in:<br/>

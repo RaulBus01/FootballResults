@@ -1,4 +1,5 @@
 # FlashGoal
+[Screenshot](https://github.com/RaulBus01/FootballResults/blob/main/src/assets/Flash-Small.png)
 This project is a website with football matches, results and standings.
 
 Before logging in:<br/>

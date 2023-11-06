@@ -12,4 +12,5 @@ After logging in:<br/>
 
 
 Technologies used for this project:<br/>
--HTML,CSS,JavaScript,Firesotre,Bootstrap and an API for fetchind football data.
+-HTML,CSS,JavaScript,Firesotre,Bootstrap and an API for fetching football data.
+API:https://www.football-data.org/
